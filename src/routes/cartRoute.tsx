@@ -1,5 +1,5 @@
 import type { RouteObject } from 'react-router-dom'
-import { PageUrlsList } from '../ultil/clientRoutes'
+import { ClientRoutes } from '../ultil/clientRoutes'
 import { lazy, Suspense } from 'react'
 import { Fallback } from '../components/layout/Fallback'
 
@@ -9,7 +9,7 @@ const Checkout = lazy(() => import('../pages/cartPage/checkout'))
 
 
 const cartRoute: RouteObject = {
-    path: PageUrlsList.Cart,
+    path: ClientRoutes.Cart,
     element: <Suspense fallback={<Fallback />}>
         <CartRoot />
     </Suspense>,
@@ -22,7 +22,7 @@ const cartRoute: RouteObject = {
             </Suspense>
         },
         {
-            path: PageUrlsList.Checkout,
+            path: ClientRoutes.Checkout,
             element: <Suspense fallback={<Fallback />}>
                 <Checkout />
             </Suspense>

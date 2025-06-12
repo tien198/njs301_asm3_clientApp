@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useActionData, useNavigation, useSubmit } from 'react-router-dom';
 
 import { BannerUrl } from '../../../ultil/bannerUrl';
-import { PageUrlsList } from '../../../ultil/clientRoutes';
+import { ClientRoutes } from '../../../ultil/clientRoutes';
 import useTwoWayBinding from '../../../hooks/useTwoWayBinding';
 import useScrollToTopPage from '../../../hooks/useScrollToTopPage';
 import Container from '../../../components/UI/Container';
@@ -79,7 +79,7 @@ function Login() {
                         <button disabled={isSubmitting} className={`w-full py-4 mt-8 bg-zinc-900 capitalize ${isSubmitting ? 'text-zinc-700' : 'text-white'}`}>Sign in</button>
                     </form>
                     <span className='inline-block py-14'>
-                        <Link to={PageUrlsList.Signup}>
+                        <Link to={ClientRoutes.Signup}>
                             Create an account? <span className='text-blue-500'> Click</span>
                         </Link>
                     </span>

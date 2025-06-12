@@ -3,13 +3,13 @@ import Container from "../../components/UI/Container";
 import { getJwt } from "../../ultil/storageUltil/authenTokenUltil";
 import { json, Outlet, useLocation } from "react-router-dom";
 import ErrorRes from "../../models/ErrorResponse";
-import { PageUrlsList } from "../../ultil/clientRoutes";
+import { ClientRoutes } from "../../ultil/clientRoutes";
 
 
 export default function CartIndex() {
     const location = useLocation()
     // true if /cart - false if /cart/checkout
-    const isCartPage = location.pathname === PageUrlsList.Cart
+    const isCartPage = location.pathname === ClientRoutes.Cart
 
     return (
         <Container className="italic">

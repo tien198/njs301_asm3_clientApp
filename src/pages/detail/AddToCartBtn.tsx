@@ -1,9 +1,9 @@
 import useTwoWayBinding from "../../hooks/useTwoWayBinding";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { addItemWithQuantity } from "../../store/cartSlice";
-import { IProduct } from "../../interfaces/IProduct";
+import type { IProduct } from "../../interfaces/IProduct";
 import { useNavigate } from "react-router-dom";
-import { PageUrlsList } from "../../ultil/clientRoutes";
+import { ClientRoutes } from "../../ultil/clientRoutes";
 import QuantityInput from "../../components/UI/QuantityInput";
 import DarkButton from "../../components/UI/DarkButton";
 
@@ -20,7 +20,7 @@ function AddToCartBtn({ productToAdd }: Props) {
     const navigate = useNavigate()
     const addToCart = () => {
         dispatch(addItemWithQuantity({ item: productToAdd, quantity: val }))
-        navigate(PageUrlsList.Cart)
+        navigate(ClientRoutes.Cart)
     }
     return (
         <div className="flex fade-in">

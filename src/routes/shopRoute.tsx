@@ -1,13 +1,13 @@
 import { redirect, type RouteObject } from "react-router-dom";
 import { Fallback } from "../components/layout/Fallback";
 import { lazy, Suspense } from "react";
-import { PageUrlsList } from "../ultil/clientRoutes";
+import { ClientRoutes } from "../ultil/clientRoutes";
 
 const ShopRoot = lazy(() => import("../pages/shop"));
 const ProductsBoard = lazy(() => import("../pages/shop/ProductsBoard"));
 
 const shopRoute: RouteObject = {
-    path: PageUrlsList.Shop,
+    path: ClientRoutes.Shop,
     element: (
         <Suspense fallback={<Fallback />}>
             <ShopRoot />
