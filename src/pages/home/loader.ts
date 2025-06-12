@@ -1,4 +1,4 @@
-import { defer, type LoaderFunctionArgs } from "react-router-dom";
+import { defer, type LoaderFunctionArgs } from "react-router";
 import loaderInitiation from "../../routes/loaders/0loaderInitiation";
 import store from "../../store";
 import { productsLoader } from "../../routes/loaders/productsLoaders";

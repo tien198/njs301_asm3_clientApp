@@ -1,6 +1,6 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { IProduct } from "../interfaces/IProduct";
 import type IProductsListState from "./storeModels/interfaces/IProductsListState";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: IProductsListState = {
     products: []

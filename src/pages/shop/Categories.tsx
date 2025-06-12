@@ -1,7 +1,10 @@
+import type { MouseEventHandler, PropsWithChildren } from "react"
+import type { NavLinkRenderProps } from "react-router"
+
+import { useState } from "react"
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { MouseEventHandler, PropsWithChildren, useState } from "react"
-import { NavLink, NavLinkRenderProps } from "react-router-dom"
+import { NavLink } from "react-router"
 
 interface HeadingProps extends PropsWithChildren {
     onclick: MouseEventHandler<HTMLHeadingElement>

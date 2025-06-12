@@ -1,7 +1,7 @@
 import Banner from "../../components/layout/Banner";
 import Container from "../../components/UI/Container";
 import { getJwt } from "../../ultil/storageUltil/authenTokenUltil";
-import { json, Outlet, useLocation } from "react-router-dom";
+import { data,Outlet, useLocation } from "react-router";
 import ErrorRes from "../../models/ErrorResponse";
 import { ClientRoutes } from "../../ultil/clientRoutes";
 
@@ -29,7 +29,7 @@ export default function CartIndex() {
 export function loader() {
     const isAuthen = getJwt()
     if (!isAuthen)
-        throw json(new ErrorRes('please login to order cart'), { status: 401 })
+        throw data('You could not access this resource', { status: 401 })
     return null
 }
 

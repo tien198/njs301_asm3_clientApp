@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router'
 import Root from './pages/Root'
 import Error from './pages/Error'
 import Home from './pages/home'
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  return <RouterProvider router={router} fallbackElement={<Fallback />} />
+  return <RouterProvider router={router} />
 }
 
 export default App

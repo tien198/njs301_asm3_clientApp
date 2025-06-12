@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router";
 import MainNav from "../components/layout/MainNav";
 import Footer from "../components/layout/Footer";
 import LiveChatIcon from "../components/UI/LiveChatIcon";

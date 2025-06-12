@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { NavLinkRenderProps } from "react-router-dom";
-import { Link, NavLink, useFetcher } from "react-router-dom";
+import type { NavLinkRenderProps } from "react-router";
+import { Link, NavLink, useFetcher } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHouse, faShop, faUser } from "@fortawesome/free-solid-svg-icons";
 // import Logo from "../../assets/Logo";

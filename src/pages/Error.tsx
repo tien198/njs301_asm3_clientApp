@@ -1,4 +1,4 @@
-import { useRouteError } from 'react-router-dom';
+import { useRouteError } from 'react-router';
 import MainNav from '../components/layout/MainNav';
 
 function Error() {
@@ -12,7 +12,7 @@ function Error() {
         message = 'Could not find resoure or page.'
     }
     else if (error.status === 401) {
-        title = 'Not Authorize!'
+        title = 'Unauthorized!'
         message = error.data.message || 'You do not have permission for this resoure.'
         // message = error.data.message
     }

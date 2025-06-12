@@ -3,7 +3,7 @@ import { useAppSelector } from "../../hooks/reduxHooks";
 import convertToFraction from "../../ultil/convertToFraction";
 import Modal from "../UI/Modal";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { ClientRoutes } from "../../ultil/clientRoutes";
 
 function ProductModal() {

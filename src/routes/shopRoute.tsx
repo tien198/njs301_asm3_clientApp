@@ -1,4 +1,4 @@
-import { redirect, type RouteObject } from "react-router-dom";
+import { redirect, type RouteObject } from "react-router";
 import { Fallback } from "../components/layout/Fallback";
 import { lazy, Suspense } from "react";
 import { ClientRoutes } from "../ultil/clientRoutes";

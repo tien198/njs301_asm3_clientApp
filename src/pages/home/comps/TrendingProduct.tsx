@@ -1,7 +1,7 @@
 import type { IProduct } from "../../../interfaces/IProduct";
 
 import { Suspense } from "react";
-import { Await, useRouteLoaderData } from "react-router-dom";
+import { Await, useRouteLoaderData } from "react-router";
 import ProductModal from "../../../components/layout/ProductModal";
 import ProductItem from "../../../components/layout/ProductIem";
 import ProductsContainer from "../../../components/layout/ProductsContainer";
