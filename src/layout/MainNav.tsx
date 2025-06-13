@@ -9,7 +9,7 @@ import Container from "../components/UI/Container";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
 import { setLogoState } from "../store/logoSlice";
 import store from "../store";
-import { getJwt, getUserInfor } from "../ultil/storageUltil/authenTokenUltil";
+import { getJwt, getUserInfor } from "../ultil/storageUltil/authenInfor";
 import { ClientRoutes } from "../ultil/clientRoutes";
 
 // css

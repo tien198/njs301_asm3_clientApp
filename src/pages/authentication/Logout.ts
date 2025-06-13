@@ -1,7 +1,7 @@
-import { redirect } from "react-router-dom";
-import { removeJwt } from "../../ultil/storageUltil/authenTokenUltil";
+import { redirect } from "react-router";
+import { removeUserInfor } from "../../ultil/storageUltil/authenInfor";
 
 export function action() {
-    removeJwt()
+    removeUserInfor()
     return redirect('/')
 }

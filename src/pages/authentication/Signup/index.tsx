@@ -1,6 +1,8 @@
+import type IAuthenError from '../../../interfaces/response/error/authenError';
+import type ErrorRes from '../../../models/errorResponse';
 
 import { useEffect, useState } from 'react';
-import { Link, useActionData, useNavigation, useSubmit } from 'react-router-dom';
+import { Link, useActionData, useNavigation, useSubmit } from 'react-router';
 
 import { BannerUrl } from '../../../ultil/bannerUrl';
 
@@ -15,7 +17,6 @@ import ErrorMsg from '../../../components/UI/ErrorMsg';
 import useValidate from '../../../hooks/useValidate';
 import { isMinLength, isNotNull } from '../../../ultil/inputValidationUltil/validate';
 import User from '../../../models/User';
-import ErrorResponse from '../../../models/ErrorResponse';
 
 // css
 import classes from '../Authen.module.scss'
@@ -41,14 +42,13 @@ function Authenticate() {
 
     // Validate that email is unique
     const submit = useSubmit()
-    const actionData = useActionData()
+    const actionData: ErrorRes<IAuthenError> | undefined = useActionData()
 
     const [uniqueEmailMsg, setUniqueEmailMsg] = useState('')
     useEffect(() => {
         if (actionData) {
-            const authenError = ErrorResponse.fromObj(actionData)
-            if (authenError?.errors?.email)
-                setUniqueEmailMsg(authenError.errors.email)
+            if (actionData?.cause?.email)
+                setUniqueEmailMsg(actionData.cause.email)
         }
     }, [actionData])
 

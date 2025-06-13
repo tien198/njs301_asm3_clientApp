@@ -1,16 +1,11 @@
 import type IAuthenResponse from "../../interfaces/response/fullfill/authenResponse";
 
 import User from "../../models/User";
-import {  removeLocalStorageCartItems } from "./cartItemsUltil";
+import { removeLocalStorageCartItems } from "./cartItemsUltil";
 import StorageEnum from "./StorageEnum";
 
-export function addJwt(authenRes: IAuthenResponse) {
-    localStorage.setItem(StorageEnum.authenToken, authenRes.token)
+export function addUserInfor(authenRes: IAuthenResponse) {
     localStorage.setItem(StorageEnum.userInfor, JSON.stringify(authenRes.user))
-}
-
-export function getJwt() {
-    return localStorage.getItem(StorageEnum.authenToken)
 }
 
 export function getUserInfor(): User | undefined {
@@ -19,8 +14,7 @@ export function getUserInfor(): User | undefined {
 }
 
 
-export function removeJwt() {
-    localStorage.removeItem(StorageEnum.authenToken)
+export function removeUserInfor() {
     localStorage.removeItem(StorageEnum.userInfor)
     removeLocalStorageCartItems()
 }

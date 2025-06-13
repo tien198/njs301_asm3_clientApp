@@ -1,6 +1,6 @@
 import { type ActionFunctionArgs, redirect } from "react-router"
-import { addJwt } from "../../../ultil/storageUltil/authenTokenUltil"
 import { ServerAPI } from "../../../ultil/serverAPIs"
+import { addUserInfor } from "../../../ultil/storageUltil/authenInfor"
 import type IAuthenResponse from "../../../interfaces/response/fullfill/authenResponse"
 
 
@@ -20,7 +20,7 @@ export async function action(args: ActionFunctionArgs) {
         return response
     if (response.status === 200) {
         const authenRes: IAuthenResponse = (await response.json())
-        addJwt(authenRes)
+        addUserInfor(authenRes)
     }
 
     return redirect('/')

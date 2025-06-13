@@ -7,7 +7,7 @@ import { faPaperclip } from '@fortawesome/free-solid-svg-icons/faPaperclip';
 import { faFaceSmile } from '@fortawesome/free-solid-svg-icons/faFaceSmile';
 import { useAppDispatch } from '../../../hooks/reduxHooks';
 import { msgAction } from '../../../store/livechatSlice';
-import { getUserInfor } from '../../../ultil/storageUltil/authenTokenUltil';
+import { getUserInfor } from '../../../ultil/storageUltil/authenInfor';
 
 export default function MsgInput() {
     const [msg, onChangeMsg, setMsg] = useTwoWayBinding('')

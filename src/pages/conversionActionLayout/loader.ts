@@ -1,5 +1,5 @@
 import { data } from "react-router"
-import { getJwt } from "../../ultil/storageUltil/authenTokenUltil"
+import { getJwt } from "../../ultil/storageUltil/authenInfor"
 
 export function loader() {
     const isAuthen = getJwt()
