@@ -1,11 +1,11 @@
-import type { RouteObject } from 'react-router-dom'
+import type { RouteObject } from 'react-router'
 import { ClientRoutes } from '../ultil/clientRoutes'
 import { lazy, Suspense } from 'react'
-import { Fallback } from '../components/layout/Fallback'
+import { Fallback } from '../components/UI/Fallback'
 
-const CartRoot = lazy(() => import('../pages/cartPage'))
-const Cart = lazy(() => import('../pages/cartPage/cart'))
-const Checkout = lazy(() => import('../pages/cartPage/checkout'))
+const CartRoot = lazy(() => import('../pages/conversionActionLayout'))
+const Cart = lazy(() => import('../pages/cart'))
+const Checkout = lazy(() => import('../pages/checkout'))
 
 
 const cartRoute: RouteObject = {
@@ -13,7 +13,7 @@ const cartRoute: RouteObject = {
     element: <Suspense fallback={<Fallback />}>
         <CartRoot />
     </Suspense>,
-    loader: () => import('../pages/cartPage').then(i => i.loader()),
+    loader: () => import('../pages/conversionActionLayout/loader').then(i => i.loader()),
     children: [
         {
             index: true,

@@ -1,8 +1,8 @@
 import Container from "../../components/UI/Container";
-import ProductModal from "../../components/layout/ProductModal";
+import ProductModal from "../../components/modal/ProductModal";
 import CategoriesDashboard from "./comps/CategoriesDashboard";
 import useScrollToTopPage from "../../hooks/useScrollToTopPage";
-import Banner from "../../components/layout/Banner";
+import Banner from "../../layout/home/Banner";
 import { Outlet } from "react-router";
 
 export default function ShopRoot() {

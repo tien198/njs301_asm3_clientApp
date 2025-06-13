@@ -2,12 +2,12 @@ import type IProduct from "../../../interfaces/IProduct";
 
 import { Suspense } from "react";
 import { Await, useRouteLoaderData } from "react-router";
-import ProductModal from "../../../components/layout/ProductModal";
-import ProductItem from "../../../components/layout/ProductIem";
-import ProductsContainer from "../../../components/layout/ProductsContainer";
+import ProductModal from "../../../components/modal/ProductModal";
+import ProductItem from "../../../components/product/ProductIem";
+import ProductsContainer from "../../../components/product/ProductsContainer";
 import Container from "../../../components/UI/Container";
 import SectionTitle from "../../../components/UI/SectionWithTitle";
-import ProductsFallback from "../../../components/layout/ProductsFallback";
+import ProductsFallback from "../../../components/product/ProductsFallback";
 
 
 

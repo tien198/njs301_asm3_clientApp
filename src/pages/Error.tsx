@@ -1,5 +1,5 @@
 import { useRouteError } from 'react-router';
-import MainNav from '../components/layout/MainNav';
+import MainNav from '../layout/MainNav';
 
 function Error() {
     const error: any = useRouteError()

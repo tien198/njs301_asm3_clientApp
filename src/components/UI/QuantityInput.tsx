@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
-import { ChangeEventHandler, MouseEventHandler } from "react";
+import type { ChangeEventHandler, MouseEventHandler } from "react";
 
 interface Props {
     val: number

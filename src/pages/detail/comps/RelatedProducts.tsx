@@ -1,13 +1,13 @@
 import { Await, useLoaderData } from "react-router";
-import ProductsContainer from "../../../components/layout/ProductsContainer";
+import ProductsContainer from "../../../components/product/ProductsContainer";
 import store from "../../../store";
 import type { DetailProps } from "..";
 import { Suspense, useEffect, useState } from "react";
 import type IProduct from "../../../interfaces/IProduct";
-import ProductItem from "../../../components/layout/ProductIem";
-import ProductsFallback from "../../../components/layout/ProductsFallback";
+import ProductItem from "../../../components/product/ProductIem";
+import ProductsFallback from "../../../components/product/ProductsFallback";
 import { getProducts } from "../../../routes/loaders/productsLoaders";
-import ProductModal from "../../../components/layout/ProductModal";
+import ProductModal from "../../../components/modal/ProductModal";
 import { addManyProducts as addManyProductsAction } from "../../../store/productsSlice";
 
 

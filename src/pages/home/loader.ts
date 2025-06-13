@@ -5,6 +5,8 @@ import loaderInitiation from "../../routes/loaders/0loaderInitiation";
 import store from "../../store";
 import { productsLoader } from "../../routes/loaders/productsLoaders";
 
+
+
 export type productLoader = {
   trendingProducts: Promise<IProduct[]>,
 }

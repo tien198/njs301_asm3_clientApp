@@ -1,8 +1,8 @@
 import { Await, useLoaderData } from "react-router";
 import { Suspense } from "react";
 import type IProduct from "../../../interfaces/IProduct";
-import ProductItem from "../../../components/layout/ProductIem";
-import ProductsFallback from "../../../components/layout/ProductsFallback";
+import ProductItem from "../../../components/product/ProductIem";
+import ProductsFallback from "../../../components/product/ProductsFallback";
 
 export default function ProductsBoard() {
   const loader: any = useLoaderData();

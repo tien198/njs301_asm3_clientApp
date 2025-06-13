@@ -3,7 +3,7 @@ import type IProduct from "../../../interfaces/IProduct"
 
 import { Suspense, useEffect, useState } from "react"
 import { Await, useAsyncValue, useLoaderData } from "react-router"
-import { Fallback } from "../../../components/layout/Fallback"
+import { Fallback } from "../../../components/UI/Fallback"
 
 interface ThumbnailProps {
     imgSrc?: string

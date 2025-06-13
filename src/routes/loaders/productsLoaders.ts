@@ -1,4 +1,4 @@
-import type { IProduct } from "../../interfaces/IProduct"
+import type IProduct from "../../interfaces/IProduct"
 
 import store from "../../store"
 import { addManyProducts } from "../../store/productsSlice";

@@ -4,7 +4,8 @@ import Root from './pages/Root'
 import Error from './pages/Error'
 import Home from './pages/home'
 import { ClientRoutes } from './ultil/clientRoutes'
-import { Fallback } from './components/layout/Fallback'
+import { Fallback } from './components/UI/Fallback'
+
 //routes
 import shopRoute from './routes/shopRoute'
 import cartRoute from './routes/cartRoute'
