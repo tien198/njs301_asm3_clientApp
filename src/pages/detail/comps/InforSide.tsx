@@ -1,11 +1,11 @@
-import type { DetailProps } from "."
-import type{ IProduct } from "../../interfaces/IProduct"
+import type { DetailProps } from ".."
+import type IProduct from "../../../interfaces/IProduct"
 
-import { Await, useLoaderData } from "react-router-dom"
-import convertToFraction from "../../ultil/convertToFraction"
+import { Await, useLoaderData } from "react-router"
+import convertToFraction from "../../../ultil/convertToFraction"
 import AddToCartBtn from "./AddToCartBtn"
 import { Suspense } from "react"
-import { Fallback } from "../../components/layout/Fallback"
+import { Fallback } from "../../../components/layout/Fallback"
 
 
 function InforSide({ product, className, isFallback = false }: DetailProps) {

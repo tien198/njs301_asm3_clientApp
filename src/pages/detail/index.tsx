@@ -1,13 +1,14 @@
-import type { IProduct } from "../../interfaces/IProduct";
-import { defer, type LoaderFunctionArgs } from "react-router-dom";
+import type IProduct from "../../interfaces/IProduct";
+import type { LoaderFunctionArgs } from "react-router";
+
 import Container from "../../components/UI/Container";
 import loaderInitiation from "../../routes/loaders/0loaderInitiation";
 import store from "../../store";
 import { productLoader } from "../../routes/loaders/productsLoaders";
-import ImgSide from "./ImgSide";
-import InforSide from "./InforSide";
-import DetailDescriptionSide from "./DetailDescriptionSide";
-import RelatedProducts from "./RelatedProducts";
+import ImgSide from "./comps/ImgSide";
+import InforSide from "./comps/InforSide";
+import DetailDescriptionSide from "./comps/DetailDescriptionSide";
+import RelatedProducts from "./comps/RelatedProducts";
 import useScrollToTopPage from "../../hooks/useScrollToTopPage";
 import useScrollToTopWhenPageIdle from "../../hooks/useScrollToTopWhenPageIdle";
 
@@ -34,20 +35,24 @@ export default function DetailIndex() {
     );
 }
 
-export function loader(args: LoaderFunctionArgs) {
+type productLoader = {
+    product: Promise<IProduct>
+}
+
+export function loader(args: LoaderFunctionArgs): productLoader {
     loaderInitiation(args, false)
     const paramName = Object.keys(args.params)[0]
     // find in `fetchedDetailProducts` then `fetchedProducts` if not found
     const product =
-        store.getState().fetchedDetailProducts.products.find(i => i._id === args.params[paramName])
-        || store.getState().fetchedProducts.products.find(i => i._id?.$oid === args.params[paramName])
+        store.getState().fetchedDetailProducts.find((i: IProduct) => i._id === args.params[paramName])
+        || store.getState().products.find((i: IProduct) => i._id?.$oid === args.params[paramName])
 
     if (product)
-        return defer({
-            product: product
+        return ({
+            product: Promise.resolve(product)
         })
     else
-        return defer({
+        return ({
             // call api to get `product` and dispath this `product` to `fetchedDetailProducts`
             product: productLoader(args.params[paramName]!)
         })

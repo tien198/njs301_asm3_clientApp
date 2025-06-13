@@ -99,7 +99,7 @@ export default function Categories({ className }: Props) {
         <div className={`hidden md:flex flex-col gap-4 italic ${className}`}>
             <h4 className="uppercase text-2xl">Categories</h4>
             <h1 className="text-white bg-zinc-950 py-2 px-4 uppercase">Apple</h1>
-            <NavLink to='all' className={navLinkStateClass}>All</NavLink>
+            <NavLink to='' className={navLinkStateClass}>All</NavLink>
             <Categories_1 />
             <Categories_2 />
             <Categories_3 />

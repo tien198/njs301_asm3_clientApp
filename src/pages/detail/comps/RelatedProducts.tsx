@@ -1,19 +1,19 @@
-import { Await, useLoaderData } from "react-router-dom";
-import ProductsContainer from "../../components/layout/ProductsContainer";
-import store from "../../store";
-import { DetailProps } from ".";
+import { Await, useLoaderData } from "react-router";
+import ProductsContainer from "../../../components/layout/ProductsContainer";
+import store from "../../../store";
+import type { DetailProps } from "..";
 import { Suspense, useEffect, useState } from "react";
-import { IProduct } from "../../interfaces/IProduct";
-import ProductItem from "../../components/layout/ProductIem";
-import ProductsFallback from "../../components/layout/ProductsFallback";
-import { getProducts } from "../../routes/loaders/productsLoaders";
-import ProductModal from "../../components/layout/ProductModal";
-import { addManyProducts as addManyProductsAction } from "../../store/productsSlice";
+import type IProduct from "../../../interfaces/IProduct";
+import ProductItem from "../../../components/layout/ProductIem";
+import ProductsFallback from "../../../components/layout/ProductsFallback";
+import { getProducts } from "../../../routes/loaders/productsLoaders";
+import ProductModal from "../../../components/layout/ProductModal";
+import { addManyProducts as addManyProductsAction } from "../../../store/productsSlice";
 
 
 // RECURSION function 3 times
 async function relatedLoader(product: IProduct, i = 0) {
-    const related = store.getState().fetchedProducts.products.filter(i => i.category === product.category && i._id?.$oid !== product._id?.$oid)
+    const related = store.getState().products.filter((i: IProduct) => i.category === product.category && i._id?.$oid !== product._id?.$oid)
 
     if (related.length > 0)
         return related

@@ -1,5 +1,5 @@
 import Categories from "./Categories";
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 export default function CategoriesDashboard({ children }: PropsWithChildren) {
     return (

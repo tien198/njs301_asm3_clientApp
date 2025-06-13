@@ -1,11 +1,11 @@
-import useTwoWayBinding from "../../hooks/useTwoWayBinding";
-import { useAppDispatch } from "../../hooks/reduxHooks";
-import { addItemWithQuantity } from "../../store/cartSlice";
-import type { IProduct } from "../../interfaces/IProduct";
-import { useNavigate } from "react-router-dom";
-import { ClientRoutes } from "../../ultil/clientRoutes";
-import QuantityInput from "../../components/UI/QuantityInput";
-import DarkButton from "../../components/UI/DarkButton";
+import useTwoWayBinding from "../../../hooks/useTwoWayBinding";
+import { useAppDispatch } from "../../../hooks/reduxHooks";
+import { addItemWithQuantity } from "../../../store/cartSlice";
+import type IProduct from "../../../interfaces/IProduct";
+import { useNavigate } from "react-router";
+import { ClientRoutes } from "../../../ultil/clientRoutes";
+import QuantityInput from "../../../components/UI/QuantityInput";
+import DarkButton from "../../../components/UI/DarkButton";
 
 interface Props {
     productToAdd: IProduct

@@ -1,9 +1,9 @@
-import type { DetailProps } from ".";
-import type { IProduct } from "../../interfaces/IProduct";
+import type { DetailProps } from "..";
+import type IProduct from "../../../interfaces/IProduct";
 
 import { Suspense } from "react";
-import { Fallback } from "../../components/layout/Fallback";
-import { Await, useLoaderData } from "react-router-dom";
+import { Fallback } from "../../../components/layout/Fallback";
+import { Await, useLoaderData } from "react-router";
 
 function DetailDescriptionSide({ product, className, isFallback = false }: DetailProps) {
     const article = product?.long_desc?.split('\n') || new Array<string>('', '', '')

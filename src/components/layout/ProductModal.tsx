@@ -7,7 +7,7 @@ import { Link } from "react-router";
 import { ClientRoutes } from "../../ultil/clientRoutes";
 
 function ProductModal() {
-    const prodState = useAppSelector(({ productModal }) => productModal.product)
+    const prodState = useAppSelector(({ productModal }) => productModal)
 
     return (
         <Modal >

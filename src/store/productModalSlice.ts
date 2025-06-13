@@ -1,16 +1,14 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { IProduct } from "../interfaces/IProduct";
-import type IProductState from "./storeModels/interfaces/IProductState";
+import type IProduct from "../interfaces/IProduct";
 
-const initialState: IProductState = {
-    product: {}
-}
+
+const initialState: IProduct | null = {}
 const productModalSlice = createSlice({
     name: 'product-modal',
     initialState,
     reducers: {
-        setProduct(state, action: PayloadAction<IProduct>) {
-            state.product = action.payload
+        setProduct(_, action: PayloadAction<IProduct>) {
+            return action.payload
         }
     }
 })

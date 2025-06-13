@@ -1,19 +1,16 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { IProduct } from "../interfaces/IProduct";
-import type IProductsListState from "./storeModels/interfaces/IProductsListState";
+import type IProduct from "../interfaces/IProduct";
 
 
 
-const initialState: IProductsListState = {
-    products: []
-}
+const initialState: IProduct[] = []
 
 const fetchedDetailProductsSlice = createSlice({
     name: 'fetchedDetailProductsSlice',
     initialState,
     reducers: {
         addOneProduct(state, action: PayloadAction<IProduct>) {
-            state.products = [...state.products, action.payload]
+            state = [...state, action.payload]
         }
     }
 })
