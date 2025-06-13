@@ -1,4 +1,4 @@
-import { IProduct } from "../interfaces/IProduct";
+import type IProduct from "../interfaces/IProduct";
 
 export class Product implements IProduct {
     constructor(data?: Partial<IProduct>) {

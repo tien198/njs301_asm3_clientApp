@@ -1,4 +1,4 @@
-import type { IProduct } from "../../../interfaces/IProduct";
+import type IProduct from "../../../interfaces/IProduct";
 
 import { Suspense } from "react";
 import { Await, useRouteLoaderData } from "react-router";

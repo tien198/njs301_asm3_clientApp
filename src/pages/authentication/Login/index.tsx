@@ -1,5 +1,7 @@
+import type IAuthenError from '../../../interfaces/response/error/authenError';
+
 import { useEffect, useState } from 'react';
-import { Link, useActionData, useNavigation, useSubmit } from 'react-router-dom';
+import { Link, useActionData, useNavigation, useSubmit } from 'react-router';
 
 import { BannerUrl } from '../../../ultil/bannerUrl';
 import { ClientRoutes } from '../../../ultil/clientRoutes';
@@ -16,7 +18,7 @@ import { isNotNull } from '../../../ultil/inputValidationUltil/validate';
 import classes from '../Authen.module.scss'
 import EmailInput from '../formInputs/EmailInput';
 import PasswordInput from '../formInputs/PasswordInput';
-import ErrorResponse from '../../../models/ErrorResponse';
+import ErrorRes from '../../../models/errorResponse';
 
 
 function Login() {
@@ -31,13 +33,12 @@ function Login() {
 
     // Validate input before submit
     const submit = useSubmit()
-    const actionData = useActionData()
+    const actionData: ErrorRes<IAuthenError> | undefined = useActionData()
     const [loginErrorMsg, setLoginErrorMsg] = useState('')
 
     useEffect(() => {
         if (actionData) {
-            const ErrorRes = ErrorResponse.fromObj(actionData)
-            setLoginErrorMsg(ErrorRes.errors?.credentials || '')
+            setLoginErrorMsg(actionData.cause?.credentials || '')
         }
     }, [actionData])
 

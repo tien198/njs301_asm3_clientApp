@@ -8,7 +8,7 @@ import ProductItem from "../../components/layout/ProductIem";
 import ProductsFallback from "../../components/layout/ProductsFallback";
 import { getProducts } from "../../routes/loaders/productsLoaders";
 import ProductModal from "../../components/layout/ProductModal";
-import { addManyProducts as addManyProductsAction } from "../../store/fetchedProductsSlice";
+import { addManyProducts as addManyProductsAction } from "../../store/productsSlice";
 
 
 // RECURSION function 3 times

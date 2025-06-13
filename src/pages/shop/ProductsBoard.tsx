@@ -1,6 +1,6 @@
-import { Await, defer, LoaderFunctionArgs, useLoaderData } from "react-router-dom";
+import { Await, defer, type LoaderFunctionArgs, useLoaderData } from "react-router";
 import { Suspense } from "react";
-import { IProduct } from "../../interfaces/IProduct";
+import type { IProduct } from "../../interfaces/IProduct";
 import ProductItem from "../../components/layout/ProductIem";
 import store from "../../store";
 import { productsLoader } from "../../routes/loaders/productsLoaders";

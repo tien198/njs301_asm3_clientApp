@@ -1,4 +1,4 @@
-import type IAuthenResponse from "../../interfaces/IAuthenResponse";
+import type IAuthenResponse from "../../interfaces/response/fullfill/authenResponse";
 
 import User from "../../models/User";
 import {  removeLocalStorageCartItems } from "./cartItemsUltil";

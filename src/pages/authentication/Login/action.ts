@@ -1,7 +1,7 @@
-import { type ActionFunctionArgs, redirect } from "react-router-dom"
-import AuthenResponse from "../../../models/AuthenRespone"
+import { type ActionFunctionArgs, redirect } from "react-router"
 import { addJwt } from "../../../ultil/storageUltil/authenTokenUltil"
 import { ServerAPI } from "../../../ultil/serverAPIs"
+import type IAuthenResponse from "../../../interfaces/response/fullfill/authenResponse"
 
 
 export async function action(args: ActionFunctionArgs) {
@@ -19,7 +19,7 @@ export async function action(args: ActionFunctionArgs) {
     if (response.status === 422 || response.status === 401)
         return response
     if (response.status === 200) {
-        const authenRes = new AuthenResponse(await response.json())
+        const authenRes: IAuthenResponse = (await response.json())
         addJwt(authenRes)
     }
 

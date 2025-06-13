@@ -1,5 +1,4 @@
-
-export interface IProduct {
+export default interface IProduct {
     _id?: {
         $oid?: string
     }
