@@ -1,27 +1,22 @@
 import type { LoaderFunctionArgs } from "react-router";
 import loaderInitiation from "../../routes/loaders/0loaderInitiation";
-import store from "../../store";
 import { productsLoader } from "../../routes/loaders/productsLoaders";
 import type IProduct from "../../interfaces/IProduct";
+import getDefer from "../../ultil/fetcher/getDefer";
+import { ServerAPI as API } from "../../ultil/serverAPIs";
 
 
 // All products loader
-type productLoader = {
-    products: Promise<IProduct[]>,
+export type productsLoader = {
+    products: Promise<IProduct[] | null>,
 }
 
-export function allLoader(loaderArgs: LoaderFunctionArgs): productLoader {
+export function allLoader(loaderArgs: LoaderFunctionArgs): productsLoader {
     loaderInitiation(loaderArgs)
 
-    const fetchedProducts = store.getState().products;
+    const products = getDefer<IProduct[]>({ url: API.products })
 
-    if (fetchedProducts.length > 0)
-        return ({
-            products: Promise.resolve(fetchedProducts),
-        });
-    return ({
-        products: productsLoader()
-    });
+    return ({ products });
 }
 
 
@@ -29,27 +24,13 @@ export function allLoader(loaderArgs: LoaderFunctionArgs): productLoader {
 
 // Categorized products loader - load filtered products by category
 type categorizedProductLoader = {
-    products: Promise<IProduct[]>,
+    products: Promise<IProduct[] | null>,
 }
 
 export function categorizedProductsLoader(args: LoaderFunctionArgs): categorizedProductLoader {
     loaderInitiation(args)
     const { params } = args
+    const products = getDefer<IProduct[]>({ url: API.products })
 
-    const fetchedProducts = store.getState().products
-    if (fetchedProducts.length > 0){
-        const products = fetchedProducts.filter(i => i.category === params.category?.toLocaleLowerCase())
-        return ({
-            products: Promise.resolve(products)
-        })
-    }
-        
-    else
-        return ({
-            // Immediately Invoked Async Function Expression (IIAFE) || Async IIFE
-            products: (async function () {
-                const products = await productsLoader()
-                return products.filter(i => i.category === params.category?.toLocaleLowerCase())
-            })()
-        })
+    return ({ products })
 }

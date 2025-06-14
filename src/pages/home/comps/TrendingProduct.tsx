@@ -1,4 +1,4 @@
-import type IProduct from "../../../interfaces/IProduct";
+import type { productsLoader } from "../loader";
 
 import { Suspense } from "react";
 import { Await, useRouteLoaderData } from "react-router";
@@ -12,8 +12,7 @@ import ProductsFallback from "../../../components/product/ProductsFallback";
 
 
 export default function TrendingProduct() {
-  const loader: any = useRouteLoaderData("home-page");
-  const { trendingProducts } = loader;
+  const loader: productsLoader = useRouteLoaderData("home-page") as productsLoader;
 
   return (
     <Container className="italic">
@@ -21,12 +20,13 @@ export default function TrendingProduct() {
       <SectionTitle h4="Top Trending Products" h5="Made The Hard Way" />
       <ProductsContainer>
         <Suspense fallback={<ProductsFallback />}>
-          <Await resolve={trendingProducts}>
-            {(loaded: IProduct[]) => {
-              return loaded.map((i) => (
-                <ProductItem product={i} key={i._id?.$oid} />
-              ));
-            }}
+          <Await resolve={loader.trendingProducts}>
+            {(prods) => prods.length > 0
+              ? prods.map((i) => (
+                <ProductItem product={i} key={i.id} />
+              ))
+              : <p>No products found</p>
+            }
           </Await>
         </Suspense>
       </ProductsContainer>

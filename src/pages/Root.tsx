@@ -2,7 +2,7 @@ import { Outlet, useLocation } from "react-router";
 import MainNav from "../layout/MainNav";
 import Footer from "../layout/Footer";
 import LiveChatIcon from "../components/modal/livechatboxModal/LiveChatIcon";
-import { ClientRoutes_absolute } from "../ultil/clientRoutes";
+import { ClientRoutes_absolute as Path } from "../ultil/clientRoutes";
 import { useEffect, useState } from "react";
 
 /**
@@ -23,8 +23,13 @@ export default function Root() {
     const [hasLiveChat, setHasLiveChat] = useState(false)
 
     useEffect(() => {
-        if (location.pathname === ClientRoutes_absolute.Home
-            || isHasLiveChat(location.pathname, [ClientRoutes_absolute.Shop, ClientRoutes_absolute.Detail, ClientRoutes_absolute.Cart, ClientRoutes_absolute.Checkout])) {
+        if (isHasLiveChat(location.pathname, [
+            Path.Home,
+            Path.Shop,
+            Path.Detail,
+            Path.Cart,
+            Path.Checkout
+        ])) {
             setHasLiveChat(true)
         }
         else setHasLiveChat(false)

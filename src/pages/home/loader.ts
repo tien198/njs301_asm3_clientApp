@@ -7,11 +7,11 @@ import { productsLoader } from "../../routes/loaders/productsLoaders";
 
 
 
-export type productLoader = {
+export type productsLoader = {
   trendingProducts: Promise<IProduct[]>,
 }
 
-export function loader(loaderArgs: LoaderFunctionArgs): productLoader {
+export function loader(loaderArgs: LoaderFunctionArgs): productsLoader {
   loaderInitiation(loaderArgs)
   const fetchedProducts = store.getState().products;
 

@@ -1,7 +1,5 @@
 export default interface IProduct {
-    _id?: {
-        $oid?: string
-    }
+    id?: string
     category?: string
     img1?: string
     img2?: string

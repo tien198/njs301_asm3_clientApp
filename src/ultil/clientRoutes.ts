@@ -4,14 +4,14 @@ export enum ClientRoutes {
     Shop = 'shop',
     Detail = 'detail',
     Cart = 'cart',
-    Checkout = 'cartcheckout',
+    Checkout = 'checkout',
     Login = 'login',
     Signup = 'signup',
     Logout = 'logout',
 }
 
 export enum ClientRoutes_absolute {
-    Home = '/' + ClientRoutes.Home,
+    Home = '/',
     Shop = '/' + ClientRoutes.Shop,
     Detail = '/' + ClientRoutes.Detail,
     Cart = '/' + ClientRoutes.Cart,

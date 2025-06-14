@@ -9,14 +9,14 @@ const Checkout = lazy(() => import('../pages/checkout'))
 
 
 const cartRoute: RouteObject = {
-    path: ClientRoutes.Cart,
+    path: '/',
     element: <Suspense fallback={<Fallback />}>
         <CartRoot />
     </Suspense>,
     loader: () => import('../pages/conversionActionLayout/loader').then(i => i.loader()),
     children: [
         {
-            index: true,
+            path: ClientRoutes.Cart,
             element: <Suspense fallback={<Fallback />}>
                 <Cart />
             </Suspense>
