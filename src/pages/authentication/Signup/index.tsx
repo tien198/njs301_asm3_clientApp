@@ -15,8 +15,7 @@ import Container from '../../../components/UI/Container';
 // validate inputs
 import ErrorMsg from '../../../components/UI/ErrorMsg';
 import useValidate from '../../../hooks/useValidate';
-import { isMinLength, isNotNull } from '../../../ultil/inputValidationUltil/validate';
-import User from '../../../models/User';
+import { isMatch, isMinLength, isNotNull } from '../../../ultil/inputValidationUltil/validate';
 
 // css
 import classes from '../Authen.module.scss'
@@ -24,6 +23,8 @@ import NameInput from '../formInputs/NameInput';
 import EmailInput from '../formInputs/EmailInput';
 import PasswordInput from '../formInputs/PasswordInput';
 import PhoneInput from '../formInputs/PhoneInput';
+import type IUser from '../../../interfaces/IUser';
+import PasswordConfirmInput from '../formInputs/PasswordConfirmInput';
 
 
 function Authenticate() {
@@ -33,12 +34,14 @@ function Authenticate() {
     const [email, onChangeEmail] = useTwoWayBinding<string>()
     const [password, onChangePassword] = useTwoWayBinding<string>()
     const [phone, onChangePhone] = useTwoWayBinding<number>()
+    const [passwordConfirm, onChangePasswordConfirm] = useTwoWayBinding<string>()
 
     // useValidate was attached useMemo()
     const nameErrorMsg = useValidate('Name', name, [isNotNull])
     const emailErrorMsg = useValidate('Email', email, [isNotNull])
     const passwordErrorMsg = useValidate('Password', password, [isNotNull, isMinLength.bind(null, 8)])
     const phoneErrorMsg = useValidate('Phone', phone, [isNotNull])
+    const passwordConfirmErrorMsg = useValidate('Password Confirm', passwordConfirm, [isNotNull, isMatch.bind(null, 'Password', password)])
 
     // Validate that email is unique
     const submit = useSubmit()
@@ -63,9 +66,9 @@ function Authenticate() {
         if (nameErrorMsg || emailErrorMsg || passwordErrorMsg || phoneErrorMsg || uniqueEmailMsg)
             return null
 
-        const user = new User(email, password, name, phone)
+        const user: IUser = { email, name, phone }
 
-        submit(Object(user), {
+        submit(user as any, {
             action: location.pathname,
             method: 'POST'
         })
@@ -79,17 +82,19 @@ function Authenticate() {
             <Container className="text-zinc-500 text-center italic py-10">
                 <div className={`${classes['authen-form']} bg-white mx-auto rounded-2xl`}>
                     <h1 className="py-16 capitalize text-2xl font-thin">Sign Up</h1>
-                    <form onSubmit={submitHandler} className={`px-3 md:px-6`}>
+                    <form onSubmit={submitHandler} className='px-3 md:px-6'>
                         <div className='flex flex-col'>
                             <NameInput value={name} onChangeVal={onChangeName} />
                             <ErrorMsg msg={isSubmited ? nameErrorMsg : ''} />
 
                             <EmailInput value={email} onChangeVal={onChangeEmail} />
-                            <ErrorMsg msg={isSubmited ? emailErrorMsg : ''} />
-                            <ErrorMsg msg={isSubmited ? uniqueEmailMsg : ''} />
+                            <ErrorMsg msg={isSubmited ? (emailErrorMsg || uniqueEmailMsg) : ''} />
 
                             <PasswordInput value={password} onChangeVal={onChangePassword} />
                             <ErrorMsg msg={isSubmited ? passwordErrorMsg : ''} />
+
+                            <PasswordConfirmInput value={passwordConfirm} onChangeVal={onChangePasswordConfirm} />
+                            <ErrorMsg msg={isSubmited ? passwordConfirmErrorMsg : ''} />
 
                             <PhoneInput value={phone} onChangeVal={onChangePhone} />
                             <ErrorMsg msg={isSubmited ? phoneErrorMsg : ''} />

@@ -22,6 +22,15 @@ export function isMinLength(minLength = 8, inputTitle: string, inputVal: string)
     ]
 }
 
+export function isMatch(matchTitle: string, matchVal: string, inputTitle: string, inputVal: string): [boolean, string?] {
+    if (inputVal === matchVal)
+        return [true]
+    else return [
+        false,
+        `${inputTitle} must match to ${matchTitle}`
+    ]
+}
+
 export default function validate(inputTitle: string, inputVal: string | number, funcArr: Function[]) {
     let msg = ''
     for (const func of funcArr) {

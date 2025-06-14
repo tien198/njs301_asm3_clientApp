@@ -1,4 +1,4 @@
-import type { LoaderFunctionArgs } from "react-router-dom"
+import type { LoaderFunctionArgs } from "react-router"
 import loaderInitiation from "../../../routes/loaders/0loaderInitiation"
 
 export function loader(args: LoaderFunctionArgs) {

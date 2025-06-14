@@ -69,7 +69,7 @@ function Login() {
             <Container className="text-zinc-500 text-center italic py-10">
                 <div className={`${classes['authen-form']} bg-white mx-auto rounded-2xl`}>
                     <h1 className="py-16 capitalize text-2xl font-thin">Log In</h1>
-                    <form onSubmit={submitHandler} className={`px-3 md:px-6`}>
+                    <form onSubmit={submitHandler} className='px-3 md:px-6'>
                         <div className='flex flex-col'>
                             <EmailInput value={email} onChangeVal={onChangeEmail} />
                             <ErrorMsg msg={isSubmited ? emailErrorMsg : ''} />

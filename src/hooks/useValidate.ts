@@ -19,10 +19,10 @@ import validate from "../ultil/inputValidationUltil/validate"
  *          
  */
 export default function useValidate(inputTitle: string, inputVal: string | number, funcArr: Function[]) {
-    const invalidAuthorMsg = useMemo(
+    const invalidMsg = useMemo(
         () => validate(inputTitle, inputVal, funcArr),
         [funcArr, inputTitle, inputVal])
 
-    return invalidAuthorMsg
+    return invalidMsg
 }
 

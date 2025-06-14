@@ -9,7 +9,7 @@ import Container from "../components/UI/Container";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
 import { setLogoState } from "../store/logoSlice";
 import store from "../store";
-import { getJwt, getUserInfor } from "../ultil/storageUltil/authenInfor";
+import { getUserInfor } from "../ultil/storageUltil/authenInfor";
 import { ClientRoutes } from "../ultil/clientRoutes";
 
 // css
@@ -39,7 +39,7 @@ function NavLeftUl() {
 }
 
 function NavRightUl() {
-    const isLogin = getJwt()
+    const isLogin = !!getUserInfor()
     const userInfo = useMemo(() => getUserInfor(), [isLogin])
 
     // set user name to re-render
