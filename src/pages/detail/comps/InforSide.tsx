@@ -16,7 +16,7 @@ function InforSide({ product, className, isFallback = false }: DetailProps) {
             <p>{isFallback ? <Fallback /> : product!.short_desc}</p>
             <p><span className="uppercase text-black mr-2">Category:</span>{isFallback ? <Fallback /> : product!.category}</p>
             <div>
-                <AddToCartBtn productToAdd={product!} />
+                <AddToCartBtn product={product!} />
             </div>
         </div>
     )

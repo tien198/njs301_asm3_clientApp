@@ -7,6 +7,8 @@ export enum ServerAPI {
     product = api + 'shop/product/',
     findByCategory = api + 'shop/find-by-category/',
 
+    addToCart = api + 'shop/add-to-cart',
+
     // auth
     signup = api + 'auth/signup/',
     login = api + 'auth/login/'

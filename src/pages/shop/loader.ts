@@ -1,6 +1,5 @@
 import type { LoaderFunctionArgs } from "react-router";
 import loaderInitiation from "../../routes/loaders/0loaderInitiation";
-import { productsLoader } from "../../routes/loaders/productsLoaders";
 import type IProduct from "../../interfaces/IProduct";
 import getDefer from "../../ultil/fetcher/getDefer";
 import { ServerAPI as API } from "../../ultil/serverAPIs";

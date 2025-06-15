@@ -15,6 +15,7 @@ export async function action(args: ActionFunctionArgs) {
             'content-type': 'application/json'
         },
         body: JSON.stringify(data),
+        credentials: 'include'
     })
     if (response.status === 422)
         return response

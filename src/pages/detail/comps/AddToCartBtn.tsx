@@ -1,26 +1,29 @@
+import type IProduct from "../../../interfaces/IProduct";
+
 import useTwoWayBinding from "../../../hooks/useTwoWayBinding";
 import { useAppDispatch } from "../../../hooks/reduxHooks";
 import { addItemWithQuantity } from "../../../store/cartSlice";
-import type IProduct from "../../../interfaces/IProduct";
-import { useNavigate } from "react-router";
-import { ClientRoutes } from "../../../ultil/clientRoutes";
+import { useFetcher } from "react-router";
+import { ClientRoutes_absolute } from "../../../ultil/clientRoutes";
 import QuantityInput from "../../../components/UI/QuantityInput";
 import DarkButton from "../../../components/UI/DarkButton";
 
 interface Props {
-    productToAdd: IProduct
+    product: IProduct
 }
-function AddToCartBtn({ productToAdd }: Props) {
+export default function AddToCartBtn({ product }: Props) {
     const [val, onChangeVal, setVal] = useTwoWayBinding<number>(1)
     const increment = () => setVal(prev => ++prev)
     const decrement = () => setVal(prev => --prev)
 
-
+    const fetcher = useFetcher();
     const dispatch = useAppDispatch()
-    const navigate = useNavigate()
     const addToCart = () => {
-        dispatch(addItemWithQuantity({ item: productToAdd, quantity: val }))
-        navigate(ClientRoutes.Cart)
+        dispatch(addItemWithQuantity({ item: product, quantity: val }))
+        fetcher.submit(
+            { productId: product.id!, quantity: val },
+            { method: 'post', action: ClientRoutes_absolute.Cart, encType: 'application/json' }
+        )
     }
     return (
         <div className="flex fade-in">
@@ -32,5 +35,3 @@ function AddToCartBtn({ productToAdd }: Props) {
         </div>
     );
 }
-
-export default AddToCartBtn;

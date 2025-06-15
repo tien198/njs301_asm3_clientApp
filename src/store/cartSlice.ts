@@ -18,7 +18,7 @@ function addWithQuantity(state: ICartState, action: PayloadAction<IItemWithQuant
     // updItemsList : updated Items List
     const updItemsList = [...state.items]
     // exIndex : existed Index
-    const exIndex = state.items.findIndex(i => i._id?.$oid === action.payload.item._id?.$oid)
+    const exIndex = state.items.findIndex(i => i.id === action.payload.item.id)
     const exItem = updItemsList[exIndex]
     const { item, quantity } = action.payload
 
@@ -45,7 +45,7 @@ function addWithQuantity(state: ICartState, action: PayloadAction<IItemWithQuant
 /** @param action -  payload is an object {id:string, quantity:number} */
 function updateQuantity(state: ICartState, action: PayloadAction<IItemWithQuantityPayload>) {
     const updItemsList = [...state.items]
-    const updIndex = state.items.findIndex(i => i._id?.$oid === action.payload.item._id?.$oid)
+    const updIndex = state.items.findIndex(i => i.id === action.payload.item.id)
     const updItem = updItemsList[updIndex]
 
     if (updItem) {
@@ -65,7 +65,7 @@ function updateQuantity(state: ICartState, action: PayloadAction<IItemWithQuanti
 
 /** @param action - payload is productId */
 function remove(state: ICartState, action: PayloadAction<string>) {
-    state.items = state.items.filter(i => i._id?.$oid !== action.payload)
+    state.items = state.items.filter(i => i.id !== action.payload)
 }
 
 function removeAll(state: ICartState) {

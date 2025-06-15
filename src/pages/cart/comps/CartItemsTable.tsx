@@ -15,7 +15,7 @@ interface Props {
 export default function CartItemsTable({ className }: Props) {
     const cartItems = useAppSelector(({ cart }) => cart.items)
     const dispatch = useAppDispatch()
-    const remove = (i: ICartItem) => dispatch(removeItem(i._id?.$oid || ''))
+    const remove = (i: ICartItem) => dispatch(removeItem(i.id || ''))
 
     function showModal(index: number) {
         dispatch(setCurrentItemIndex(index))
@@ -38,7 +38,7 @@ export default function CartItemsTable({ className }: Props) {
                 </thead>
                 <tbody>
                     {cartItems.map((i, index) =>
-                        <tr key={i._id?.$oid} >
+                        <tr key={i.id} >
                             <td onClick={() => showModal(index)} className="hover:cursor-pointer py-4">
                                 <img src={i.img1} alt={i.name} className="mx-auto md:w-48" />
                             </td>

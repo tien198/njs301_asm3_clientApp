@@ -19,7 +19,8 @@ const cartRoute: RouteObject = {
             path: ClientRoutes.Cart,
             element: <Suspense fallback={<Fallback />}>
                 <Cart />
-            </Suspense>
+            </Suspense>,
+            action: (args) => import('../pages/cart/action').then(i => i.action(args)),
         },
         {
             path: ClientRoutes.Checkout,

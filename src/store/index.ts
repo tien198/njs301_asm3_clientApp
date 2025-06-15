@@ -2,8 +2,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import logoReducer from "./logoSlice";
 import modalReducer from "./modalSlice";
 import productModalReducer from "./productModalSlice";
-import productsReducer from "./productsSlice";
-import fetchedDetailProductsReducer from "./fetchedDetailProductsSlice";
 import cartReducer from "./cartSlice";
 import cartTotalReducer from "./cartTotalSlice";
 import livechatReducer from "./livechatSlice";
@@ -12,8 +10,6 @@ import livechatReducer from "./livechatSlice";
 const store = configureStore({
     reducer: {
         logoState: logoReducer,
-        products: productsReducer,
-        fetchedDetailProducts: fetchedDetailProductsReducer,
         modal: modalReducer,
         productModal: productModalReducer,
         cart: cartReducer,

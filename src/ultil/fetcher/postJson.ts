@@ -35,13 +35,13 @@ export async function postJson<T extends object>({
             // 'content-type': 'application/json',
             ...Object.fromEntries(args.request.headers.entries())
         }
-
-        const res = await fetch(url, {
+        const requestInit: RequestInit = {
             method: args.request.method,
             headers: headersInit,
             body: JSON.stringify(data),
             credentials: includeCookie ? 'include' : 'same-origin'
-        });
+        }
+        const res = await fetch(url, requestInit);
         const json = await res.json()
         if (res.ok)
             return actionInDone ? actionInDone(json) : json as T;
