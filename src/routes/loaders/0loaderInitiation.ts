@@ -1,10 +1,9 @@
-import type { LoaderFunctionArgs } from "react-router";
+import { redirect, type LoaderFunctionArgs } from "react-router";
 import { hideModalDispath } from "../dispaths/hideModalDispath";
-import redirectToLowercaseUrl from "./redirectToLowercaseUrl";
+import isLowercaseUrl from "./isLowercaseUrl";
 import { logoAnimationAcceptDispath } from "../dispaths/logoAnimationAcceptDispath";
 
 export default function loaderInitiation(loaderArgs: LoaderFunctionArgs, logoAnimationAccept = true) {
-    redirectToLowercaseUrl(loaderArgs.request.url)
     hideModalDispath()
     logoAnimationAcceptDispath(logoAnimationAccept)
 }

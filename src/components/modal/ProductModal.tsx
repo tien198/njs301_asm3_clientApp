@@ -21,7 +21,7 @@ function ProductModal() {
                         <p>{prodState.short_desc}</p>
                     </div>
                     <div>
-                        <Link to={`${ClientRoutes_absolute.Detail}/${prodState._id?.$oid}`} className="inline-block py-4 pl-5 pr-8 text-white bg-slate-800">
+                        <Link to={`${ClientRoutes_absolute.Detail}/${prodState.id}`} className="inline-block py-4 pl-5 pr-8 text-white bg-slate-800">
                             <FontAwesomeIcon icon={faCartShopping} className="mr-4" />
                             View Detail
                         </Link>

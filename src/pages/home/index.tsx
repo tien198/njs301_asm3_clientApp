@@ -1,6 +1,6 @@
 import AdditionalInformation from '../../layout/AdditionalInformation';
 import HomeBanner from './comps/HomeBanner';
-import CategoriesBrowser from '../../layout/home/CategoriesBrowser';
+import CategoriesBrowser from './comps/CategoriesBrowser';
 import useScrollToTopPage from '../../hooks/useScrollToTopPage';
 import TrendingProduct from './comps/TrendingProduct';
 

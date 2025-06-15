@@ -1,6 +1,6 @@
 import BillingDetail from './comps/BillingDetail';
 // css
-import classes from '../conversionActionLayout/CartLayout.module.scss';
+import classes from '../../layout/conversionActionLayout/CartLayout.module.scss';
 import CheckoutTotal from './comps/CheckoutTotal';
 import SuccessOrderModal from './comps/SuccessOrderModal';
 

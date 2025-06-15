@@ -40,9 +40,9 @@ function Categories_1() {
         <>
             <Heading onclick={toggle} className="hover:cursor-pointer" isActive={isActive} >Iphone & Mac</Heading>
             <div className={`flex flex-col gap-4 overflow-hidden duration-150 ${height}`}>
-                <NavLink to='Iphone' className={navLinkStateClass}>Iphone</NavLink>
-                <NavLink to='Ipad' className={navLinkStateClass}>Ipad</NavLink>
-                <NavLink to='Macbook' className={navLinkStateClass}>Macbook</NavLink>
+                <NavLink to='iphone' className={navLinkStateClass}>Iphone</NavLink>
+                <NavLink to='ipad' className={navLinkStateClass}>Ipad</NavLink>
+                <NavLink to='macbook' className={navLinkStateClass}>Macbook</NavLink>
             </div>
         </>
     )
@@ -62,8 +62,8 @@ function Categories_2() {
         <>
             <Heading onclick={toggle} className="hover:cursor-pointer" isActive={isActive}>Wireless</Heading>
             <div className={`flex flex-col gap-4 overflow-hidden duration-150 ${height}`}>
-                <NavLink to='Airpod' className={navLinkStateClass}>Airpod</NavLink>
-                <NavLink to='Watch' className={navLinkStateClass}>Watch</NavLink>
+                <NavLink to='airpod' className={navLinkStateClass}>Airpod</NavLink>
+                <NavLink to='watch' className={navLinkStateClass}>Watch</NavLink>
             </div>
         </>
     )
@@ -83,9 +83,9 @@ function Categories_3() {
         <>
             <Heading onclick={toggle} className="hover:cursor-pointer" isActive={isActive}>Other</Heading>
             <div className={`flex flex-col gap-4 overflow-hidden duration-150 ${height}`}>
-                <NavLink to='Mouse' className={navLinkStateClass}>Mouse</NavLink>
-                <NavLink to='Keyboard' className={navLinkStateClass}>Keyboard</NavLink>
-                <NavLink to='Other' className={navLinkStateClass}>Other</NavLink>
+                <NavLink to='mouse' className={navLinkStateClass}>Mouse</NavLink>
+                <NavLink to='keyboard' className={navLinkStateClass}>Keyboard</NavLink>
+                <NavLink to='other' className={navLinkStateClass}>Other</NavLink>
             </div>
         </>
     )

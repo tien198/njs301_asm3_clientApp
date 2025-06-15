@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import TotalSideLayout from "../../conversionActionLayout/comps/TotalSideLayout";
+import TotalSideLayout from "../../../layout/conversionActionLayout/comps/TotalSideLayout";
 import convertToFraction from "../../../ultil/convertToFraction";
 import type ICartItem from "../../../store/storeModels/interfaces/ICartItem";
 import { useAppSelector } from "../../../hooks/reduxHooks";

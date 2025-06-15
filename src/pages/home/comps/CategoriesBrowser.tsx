@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import Container from "../../components/UI/Container";
-import SectionTitle from "../../components/UI/SectionWithTitle";
+import Container from "../../../components/UI/Container";
+import SectionTitle from "../../../components/UI/SectionWithTitle";
 import classes from './CategoriesBrowser.module.css'
 
 

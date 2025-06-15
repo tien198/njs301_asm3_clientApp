@@ -6,7 +6,7 @@ import { setTotal } from "../../../store/cartTotalSlice";
 import convertToFraction from "../../../ultil/convertToFraction";
 import useTwoWayBinding from "../../../hooks/useTwoWayBinding";
 import DarkButton from "../../../components/UI/DarkButton";
-import TotalSideLayout from "../../conversionActionLayout/comps/TotalSideLayout";
+import TotalSideLayout from "../../../layout/conversionActionLayout/comps/TotalSideLayout";
 
 interface Props {
     className: string

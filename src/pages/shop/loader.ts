@@ -29,8 +29,8 @@ type categorizedProductLoader = {
 
 export function categorizedProductsLoader(args: LoaderFunctionArgs): categorizedProductLoader {
     loaderInitiation(args)
-    const { params } = args
-    const products = getDefer<IProduct[]>({ url: API.products })
+    const params = args.params
+    const products = getDefer<IProduct[]>({ url: API.findByCategory + params.category })
 
     return ({ products })
 }

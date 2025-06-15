@@ -4,8 +4,8 @@ import { lazy, Suspense } from "react";
 import { ClientRoutes } from "../ultil/clientRoutes";
 import { Fallback } from "../components/UI/Fallback";
 
-const ShopRoot = lazy(() => import("../pages/shop"));
-const ProductsBoard = lazy(() => import("../pages/shop/comps/ProductsBoard"));
+const ShopRoot = lazy(() => import("../layout/shopLayout"));
+const Shop = lazy(() => import("../pages/shop"));
 
 const shopRoute: RouteObject = {
     path: ClientRoutes.Shop,
@@ -19,7 +19,7 @@ const shopRoute: RouteObject = {
             index: true,
             element: (
                 <Suspense fallback={<Fallback />}>
-                    <ProductsBoard />
+                    <Shop />
                 </Suspense>
             ),
             loader: (args) => import("../pages/shop/loader").then(i => i.allLoader(args)),
@@ -29,7 +29,7 @@ const shopRoute: RouteObject = {
             path: ":category",
             element: (
                 <Suspense fallback={<Fallback />}>
-                    <ProductsBoard />
+                    <Shop />
                 </Suspense>
             ),
             loader: (args) => import("../pages/shop/loader").then(i => i.categorizedProductsLoader(args)),

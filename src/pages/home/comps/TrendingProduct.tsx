@@ -21,11 +21,17 @@ export default function TrendingProduct() {
       <ProductsContainer>
         <Suspense fallback={<ProductsFallback />}>
           <Await resolve={loader.trendingProducts}>
-            {(prods) => prods.length > 0
-              ? prods.map((i) => (
+            {(prods) => {
+              if (!prods)
+                return <p>Failed to load products</p>
+
+              if (prods.length === 0)
+                return <p>No products found</p>
+
+              return prods.map((i) => (
                 <ProductItem product={i} key={i.id} />
               ))
-              : <p>No products found</p>
+            }
             }
           </Await>
         </Suspense>

@@ -1,19 +1,32 @@
-import Container from "../../components/UI/Container";
-import ProductModal from "../../components/modal/ProductModal";
-import CategoriesDashboard from "./comps/CategoriesDashboard";
-import useScrollToTopPage from "../../hooks/useScrollToTopPage";
-import Banner from "../../layout/home/Banner";
-import { Outlet } from "react-router";
+import type { productsLoader } from "./loader";
+import { Await, useLoaderData } from "react-router";
+import { Suspense } from "react";
+import ProductItem from "../../components/product/ProductIem";
+import ProductsFallback from "../../components/product/ProductsFallback";
 
-export default function ShopRoot() {
-    useScrollToTopPage()
-    return (
-        <Container className="flex flex-col gap-4 mb-12">
-            <ProductModal />
-            <Banner pageTitle="Shop" />
-            <CategoriesDashboard>
-                <Outlet />  {/* ------------ Outlet in here */}
-            </CategoriesDashboard>
-        </Container>
-    );
+export default function ProductsBoard() {
+  const loader: productsLoader = useLoaderData();
+  const { products } = loader;
+
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 justify-center italic">
+      <Suspense fallback={<ProductsFallback />}>
+        <Await resolve={products}>
+          {(prods) => {
+            if (!prods)
+              return <p>Failed to load products</p>
+
+            if (prods.length === 0)
+              return <p>No products found</p>
+
+            return prods.map(i =>
+              <ProductItem product={i} key={i.id} />
+            )
+          }
+          }
+        </Await>
+      </Suspense>
+    </div>
+  );
 }
+

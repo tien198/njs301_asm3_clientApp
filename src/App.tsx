@@ -20,6 +20,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    loader: (args) => console.log('root loader'),
     errorElement: <Error />,
     children: [
       {
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
         element: <Suspense fallback={<Fallback />}>
           <Detail />
         </Suspense>,
-        loader: (args) => import('./pages/detail').then(i => i.loader(args))
+        loader: (args) => import('./pages/detail/loader').then(i => i.loader(args))
       },
       {
         path: ClientRoutes.Login,

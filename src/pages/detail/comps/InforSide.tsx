@@ -1,11 +1,11 @@
 import type { DetailProps } from ".."
-import type IProduct from "../../../interfaces/IProduct"
 
 import { Await, useLoaderData } from "react-router"
 import convertToFraction from "../../../ultil/convertToFraction"
 import AddToCartBtn from "./AddToCartBtn"
 import { Suspense } from "react"
 import { Fallback } from "../../../components/UI/Fallback"
+import type { productLoader } from "../loader"
 
 
 function InforSide({ product, className, isFallback = false }: DetailProps) {
@@ -23,12 +23,14 @@ function InforSide({ product, className, isFallback = false }: DetailProps) {
 }
 
 export default function InforSideSuspense({ className }: DetailProps) {
-    const { product }: any = useLoaderData()
+    const { product }: productLoader = useLoaderData()
     return (
         <Suspense fallback={<InforSide className={className} isFallback />}>
-            <Await resolve={product}
-                children={(loaded: IProduct) =>
-                    <InforSide product={loaded} className={className} />}>
+            <Await resolve={product}>
+                {(prod) => prod
+                    ? <InforSide product={prod} className={className} />
+                    : <p>Product not found</p>
+                }
             </Await>
         </Suspense>
     )

@@ -1,9 +1,9 @@
 import type { DetailProps } from "..";
-import type IProduct from "../../../interfaces/IProduct";
 
 import { Suspense } from "react";
 import { Fallback } from "../../../components/UI/Fallback";
 import { Await, useLoaderData } from "react-router";
+import type { productLoader } from "../loader";
 
 function DetailDescriptionSide({ product, className, isFallback = false }: DetailProps) {
     const article = product?.long_desc?.split('\n') || new Array<string>('', '', '')
@@ -28,13 +28,14 @@ function DetailDescriptionSide({ product, className, isFallback = false }: Detai
 }
 
 export default function DetailDescriptionSideSuspense({ className }: DetailProps) {
-    const { product }: any = useLoaderData()
+    const { product }: productLoader = useLoaderData()
     return (
         <Suspense fallback={<DetailDescriptionSide className={className} isFallback />}>
-            <Await resolve={product}
-                children={(loaded: IProduct) =>
-                    <DetailDescriptionSide product={loaded} className={className} />
-                }>
+            <Await resolve={product}>
+                {(prod) => prod
+                    ? <DetailDescriptionSide product={prod} className={className} />
+                    : <p>Product not found</p>
+                }
             </Await>
         </Suspense>
     )

@@ -2,25 +2,19 @@ import type { LoaderFunctionArgs } from "react-router";
 import type IProduct from "../../interfaces/IProduct";
 
 import loaderInitiation from "../../routes/loaders/0loaderInitiation";
-import store from "../../store";
-import { productsLoader } from "../../routes/loaders/productsLoaders";
+import getDefer from "../../ultil/fetcher/getDefer";
+import { ServerAPI as API } from "../../ultil/serverAPIs";
 
 
 
 export type productsLoader = {
-  trendingProducts: Promise<IProduct[]>,
+  trendingProducts: Promise<IProduct[] | null>,
 }
 
 export function loader(loaderArgs: LoaderFunctionArgs): productsLoader {
   loaderInitiation(loaderArgs)
-  const fetchedProducts = store.getState().products;
 
-  if (fetchedProducts.length > 0)
-    return ({
-      trendingProducts: Promise.resolve(fetchedProducts),
-    });
-  else
-    return ({
-      trendingProducts: productsLoader(),
-    });
+  const trendingProducts = getDefer<IProduct[]>({ url: API.products })
+
+  return ({ trendingProducts })
 }

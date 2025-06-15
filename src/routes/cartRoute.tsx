@@ -3,7 +3,7 @@ import { ClientRoutes } from '../ultil/clientRoutes'
 import { lazy, Suspense } from 'react'
 import { Fallback } from '../components/UI/Fallback'
 
-const CartRoot = lazy(() => import('../pages/conversionActionLayout'))
+const CartRoot = lazy(() => import('../layout/conversionActionLayout'))
 const Cart = lazy(() => import('../pages/cart'))
 const Checkout = lazy(() => import('../pages/checkout'))
 
@@ -13,7 +13,7 @@ const cartRoute: RouteObject = {
     element: <Suspense fallback={<Fallback />}>
         <CartRoot />
     </Suspense>,
-    loader: () => import('../pages/conversionActionLayout/loader').then(i => i.loader()),
+    loader: () => import('../layout/conversionActionLayout/loader').then(i => i.loader()),
     children: [
         {
             path: ClientRoutes.Cart,

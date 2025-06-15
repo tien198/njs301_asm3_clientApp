@@ -1,31 +1,16 @@
 import { Await, useLoaderData } from "react-router";
 import ProductsContainer from "../../../components/product/ProductsContainer";
-import store from "../../../store";
 import type { DetailProps } from "..";
 import { Suspense, useEffect, useState } from "react";
 import type IProduct from "../../../interfaces/IProduct";
 import ProductItem from "../../../components/product/ProductIem";
 import ProductsFallback from "../../../components/product/ProductsFallback";
-import { getProducts } from "../../../routes/loaders/productsLoaders";
 import ProductModal from "../../../components/modal/ProductModal";
-import { addManyProducts as addManyProductsAction } from "../../../store/productsSlice";
+import getDefer from "../../../ultil/fetcher/getDefer";
+import { ServerAPI as API } from "../../../ultil/serverAPIs";
+import type { productLoader } from "../loader";
 
 
-// RECURSION function 3 times
-async function relatedLoader(product: IProduct, i = 0) {
-    const related = store.getState().products.filter((i: IProduct) => i.category === product.category && i._id?.$oid !== product._id?.$oid)
-
-    if (related.length > 0)
-        return related
-
-    if (i > 3) return []
-
-    // call API, if find related products, dispath them to Redux's store
-    const products = await getProducts()
-    const relatedProds = products.filter(i => i.category === product.category && i._id?.$oid !== product._id?.$oid)
-    if (relatedProds.length > 0) store.dispatch(addManyProductsAction(relatedProds))
-    return await relatedLoader(product, ++i)
-}
 
 function RelatedProducts({ product, className, isFallback = false }: DetailProps) {
     const [relatedProds, setRelatedProds] = useState<IProduct[]>()
@@ -33,8 +18,8 @@ function RelatedProducts({ product, className, isFallback = false }: DetailProps
     // prevent recurion if `isFallback == true` product undefind lead to infinity loop
     !isFallback && useEffect(() => {
         (async function () {
-            const relatedProducts = await relatedLoader(product!)
-            setRelatedProds(relatedProducts)
+            const relatedProducts = await getDefer<IProduct[]>({ url: API.findByCategory + product!.category })
+            setRelatedProds(relatedProducts || [])
         })()
     }, [product])
     return (
@@ -44,7 +29,7 @@ function RelatedProducts({ product, className, isFallback = false }: DetailProps
             <ProductsContainer >
                 {isFallback && <ProductsFallback />}
                 {isFallback || !relatedProds && <ProductsFallback />}
-                {relatedProds?.map(i => <ProductItem product={i} key={i._id?.$oid} />)}
+                {relatedProds?.map(i => <ProductItem product={i} key={i.id} />)}
             </ProductsContainer>
             {!isFallback && relatedProds?.length === 0 && <div className="bg-zinc-200 py-10 text-center animate-pulse">Any related product found!</div>}
         </div>
@@ -52,13 +37,15 @@ function RelatedProducts({ product, className, isFallback = false }: DetailProps
 }
 
 export default function RelatedProductsSuspense({ className }: DetailProps) {
-    const { product }: any = useLoaderData()
+    const { product }: productLoader = useLoaderData()
 
     return (
         <Suspense fallback={<RelatedProducts className={className} isFallback />}>
             <Await resolve={product}>
-                {(loaded: IProduct) =>
-                    <RelatedProducts product={loaded} className={className} />}
+                {(prod) => prod
+                    ? <RelatedProducts product={prod} className={className} />
+                    : <p>Product not found</p>
+                }
             </Await>
         </Suspense>
     )

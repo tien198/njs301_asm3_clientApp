@@ -1,4 +1,4 @@
-import Banner from "../../layout/home/Banner";
+import Banner from "../../pages/home/comps/Banner";
 import Container from "../../components/UI/Container";
 import { Outlet, useLocation } from "react-router";
 import { ClientRoutes } from "../../ultil/clientRoutes";
