@@ -1,17 +1,20 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { ICartState, IItemWithQuantityPayload } from './storeModels/interfaces/ICartState';
 import CartItem from './storeModels/implementations/CartItem';
-import { getLocalStorageCartItems, addLocalStorageCartItems } from '../ultil/storageUltil/cartItemsUltil';
+import type ICartItem from './storeModels/interfaces/ICartItem';
 
-const localCartItems = getLocalStorageCartItems()
 
 const initialState: ICartState = {
-    items: localCartItems ? JSON.parse(localCartItems) : [],
+    items: [],
     currentItemIndex: 0
 }
 
 function setCurrent(state: ICartState, action: PayloadAction<number>) {
     state.currentItemIndex = action.payload
+}
+
+function setAllCart(state: ICartState, action: PayloadAction<ICartItem[]>) {
+    state.items = action.payload
 }
 
 function addWithQuantity(state: ICartState, action: PayloadAction<IItemWithQuantityPayload>) {
@@ -26,7 +29,7 @@ function addWithQuantity(state: ICartState, action: PayloadAction<IItemWithQuant
         const addedQuantity = Number(exItem.quantity) + Number(quantity)
 
         if (addedQuantity >= 0) {
-            const updItem = CartItem.createWithQuantity(item, addedQuantity)
+            const updItem = CartItem.create(item, addedQuantity)
             updItemsList[exIndex] = { ...updItem }
         }
         else {
@@ -34,11 +37,10 @@ function addWithQuantity(state: ICartState, action: PayloadAction<IItemWithQuant
         }
     }
     else if (Number(quantity) >= 0) {
-        const newItem = CartItem.createWithQuantity(action.payload.item, quantity)
+        const newItem = CartItem.create(action.payload.item, quantity)
         updItemsList.push({ ...newItem })
     }
 
-    addLocalStorageCartItems(updItemsList)
     state.items = updItemsList
 }
 
@@ -52,14 +54,13 @@ function updateQuantity(state: ICartState, action: PayloadAction<IItemWithQuanti
         const updQuantity = Number(action.payload.quantity)
 
         if (updQuantity >= 0) {
-            const itemInstance = CartItem.createWithQuantity(updItem, updQuantity)
+            const itemInstance = CartItem.create(updItem, updQuantity)
             updItemsList[updIndex] = { ...itemInstance }
         }
         else
             updItemsList.splice(updIndex, 1)
     }
 
-    addLocalStorageCartItems(updItemsList)
     state.items = updItemsList
 }
 
@@ -80,9 +81,10 @@ const cartSlice = createSlice({
         addItemWithQuantity: addWithQuantity,
         updateItemQuantity: updateQuantity,
         removeItem: remove,
-        removeAllItem: removeAll
+        removeAllItem: removeAll,
+        setCart: setAllCart
     }
 })
 
-export const { setCurrentItemIndex, addItemWithQuantity, updateItemQuantity, removeItem, removeAllItem } = cartSlice.actions
+export const { setCurrentItemIndex, addItemWithQuantity, updateItemQuantity, removeItem, removeAllItem, setCart } = cartSlice.actions
 export default cartSlice.reducer

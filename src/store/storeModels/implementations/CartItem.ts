@@ -9,7 +9,7 @@ export default class CartItem implements ICartItem {
         this.total = Number(this.price) * Number(this.quantity)
         return this.total
     }
-    static createWithQuantity(product: IProduct, quantity?: number | string) {
+    static create(product: IProduct, quantity?: number | string) {
         const item = new CartItem(product)
         item.quantity = Number(quantity) || 1
         item.totalCalc()

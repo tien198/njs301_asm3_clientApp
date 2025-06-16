@@ -20,6 +20,7 @@ const cartRoute: RouteObject = {
             element: <Suspense fallback={<Fallback />}>
                 <Cart />
             </Suspense>,
+            loader: () => import('../pages/cart/loader').then(i => i.loader()),
             action: (args) => import('../pages/cart/action').then(i => i.action(args)),
         },
         {

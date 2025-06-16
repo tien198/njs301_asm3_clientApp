@@ -16,7 +16,7 @@ export default function CartItemModal() {
     const hideModal = useHideModal()
     const dispatch = useAppDispatch()
     const remove = (i: IProduct) => {
-        dispatch(removeItem(i._id?.$oid || ''))
+        dispatch(removeItem(i.id || ''))
         hideModal()
     }
 

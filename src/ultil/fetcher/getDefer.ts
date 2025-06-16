@@ -17,8 +17,8 @@ export default async function getDefer<T>({ url, includeCookie = false, token }:
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const defer: Promise<T> = response.json()
-        return defer
+        return await response.json()
+
     } catch (error) {
         console.error(error)
         return Promise.resolve(null)
