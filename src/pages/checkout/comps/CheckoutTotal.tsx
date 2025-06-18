@@ -1,10 +1,11 @@
 import type { HTMLAttributes } from "react";
+import type { ICartItem } from "../../../interfaces/cartItem";
+
 import TotalSideLayout from "../../../layout/conversionActionLayout/comps/TotalSideLayout";
 import convertToFraction from "../../../ultil/convertToFraction";
-import type ICartItem from "../../../store/storeModels/interfaces/ICartItem";
 import { useAppSelector } from "../../../hooks/reduxHooks";
 
-function Item({ name, price, quantity }: ICartItem) {
+function Item({ name, price, quantity }: Partial<ICartItem>) {
     return (
         <>
             <div className="flex justify-between">
@@ -26,7 +27,7 @@ export default function CheckoutTotal({ className }: HTMLAttributes<HTMLDivEleme
             <h4 className="text-2xl">Your order</h4>
             <div>
                 {items.map(i =>
-                    <Item name={i.name} price={i.price} quantity={i.quantity} key={i._id?.$oid} />
+                    <Item name={i.name} price={i.price} quantity={i.quantity} key={i.id} />
                 )}
                 <div className="flex justify-between">
                     <span>Total</span>

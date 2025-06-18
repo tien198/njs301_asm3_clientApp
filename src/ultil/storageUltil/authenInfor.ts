@@ -1,7 +1,7 @@
 import type IAuthenResponse from "../../interfaces/response/fullfill/authenResponse";
-import type IUser from "../../interfaces/IUser";
+import type IUser from "../../interfaces/user";
 
-import { removeLocalStorageCartItems } from "./cartItemsUltil";
+import { clearLocalStorageCartItems } from "./cartItemsUltil";
 import StorageEnum from "./StorageEnum";
 
 export function addUserInfor(authenRes: IAuthenResponse) {
@@ -14,7 +14,7 @@ export function getUserInfor(): IUser | undefined {
 }
 
 
-export function removeUserInfor() {
+export function clearUserInfor() {
     localStorage.removeItem(StorageEnum.userInfor)
-    removeLocalStorageCartItems()
+    clearLocalStorageCartItems()
 }

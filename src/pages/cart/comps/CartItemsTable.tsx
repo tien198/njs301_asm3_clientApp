@@ -1,4 +1,4 @@
-import type ICartItem from "../../../store/storeModels/interfaces/ICartItem"
+import type { ICartItem } from "../../../interfaces/cartItem"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks"
@@ -38,7 +38,7 @@ export default function CartItemsTable({ className }: Props) {
                 </thead>
                 <tbody>
                     {cartItems.map((i, index) =>
-                        <tr key={i.id} >
+                        <tr key={i.productId} >
                             <td onClick={() => showModal(index)} className="hover:cursor-pointer py-4">
                                 <img src={i.img1} alt={i.name} className="mx-auto md:w-48" />
                             </td>
@@ -49,7 +49,7 @@ export default function CartItemsTable({ className }: Props) {
                             <td>
                                 <CartItemQuantityInput item={i} />
                             </td>
-                            <td className="text-zinc-500">{convertToFraction(Number(i.total))} VNĐ</td>
+                            <td className="text-zinc-500">{convertToFraction(Number(i.lineTotal))} VNĐ</td>
                             <td className="hidden md:table-cell">
                                 <button onClick={() => remove(i)}>
                                     <FontAwesomeIcon icon={faTrashCan} className="text-zinc-400" />

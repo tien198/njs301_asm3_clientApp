@@ -1,4 +1,3 @@
-import type IProduct from "../../../interfaces/IProduct";
 import type { ICartState } from "../../../store/storeModels/interfaces/ICartState";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,6 +7,7 @@ import { removeItem } from "../../../store/cartSlice";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import convertToFraction from "../../../ultil/convertToFraction";
 import CartItemQuantityInput from "./CartItemQuantityInput";
+import type { ICartItem } from "../../../interfaces/cartItem";
 
 export default function CartItemModal() {
     const { items: itemsList, currentItemIndex: curIndex }: ICartState = useAppSelector(({ cart }) => cart)
@@ -15,8 +15,8 @@ export default function CartItemModal() {
 
     const hideModal = useHideModal()
     const dispatch = useAppDispatch()
-    const remove = (i: IProduct) => {
-        dispatch(removeItem(i.id || ''))
+    const remove = (i: ICartItem) => {
+        dispatch(removeItem(i.productId || ''))
         hideModal()
     }
 
@@ -40,7 +40,7 @@ export default function CartItemModal() {
                 </span>
 
                 <span className="overflow-hidden col-start-1 col-end-3 uppercase">Total</span>
-                <span className="overflow-hidden col-start-3 -col-end-1">{convertToFraction(Number(item.total))}</span>
+                <span className="overflow-hidden col-start-3 -col-end-1">{convertToFraction(Number(item.lineTotal))}</span>
 
                 <span className="overflow-hidden col-start-1 col-end-3 uppercase">Remove</span>
                 <span className="overflow-hidden col-start-3 -col-end-1">

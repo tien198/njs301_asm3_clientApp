@@ -17,7 +17,7 @@ export default function Cart() {
     const { cart } = useLoaderData<CartLoader>()
     const dispatch = useAppDispatch()
     useEffect(() => {
-        cart && cart.then(i => {
+        if (cart) cart.then(i => {
             if (i) {
                 dispatch(setCart(i))
                 dispatch(setTotal(i))

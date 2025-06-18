@@ -21,13 +21,14 @@ const cartRoute: RouteObject = {
                 <Cart />
             </Suspense>,
             loader: () => import('../pages/cart/loader').then(i => i.loader()),
-            action: (args) => import('../pages/cart/action').then(i => i.action(args)),
+            action: (args) => import('../pages/cart/action').then(i => i.addToCartAction(args)),
         },
         {
             path: ClientRoutes.Checkout,
             element: <Suspense fallback={<Fallback />}>
                 <Checkout />
-            </Suspense>
+            </Suspense>,
+            action: (args) => import('../pages/checkout/action').then(i => i.checkoutAction(args)),
         },
     ]
 }

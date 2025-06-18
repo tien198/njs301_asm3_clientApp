@@ -1,11 +1,12 @@
-import type ICartItem from "./ICartItem"
+import type { ICartItem } from "../../../interfaces/cartItem";
+import type IProduct from "../../../interfaces/product";
 
 export interface ICartState {
     items: ICartItem[]
     currentItemIndex: number
 }
 
-export interface IItemWithQuantityPayload {
-    item: ICartItem
-    quantity: number | string
+export interface ItemWithQuantityPayload {
+    item: IProduct
+    quantity: number 
 }

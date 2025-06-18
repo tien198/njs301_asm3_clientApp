@@ -1,5 +1,5 @@
 import type { ChangeEvent } from "react"
-import type ICartItem from "../../../store/storeModels/interfaces/ICartItem"
+import type { ICartItem } from "../../../interfaces/cartItem"
 
 import QuantityInput from "../../../components/UI/QuantityInput"
 import { useAppDispatch } from "../../../hooks/reduxHooks"

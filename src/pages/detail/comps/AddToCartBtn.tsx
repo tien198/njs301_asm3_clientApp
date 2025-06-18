@@ -1,4 +1,4 @@
-import type IProduct from "../../../interfaces/IProduct";
+import type IProduct from "../../../interfaces/product";
 
 import useTwoWayBinding from "../../../hooks/useTwoWayBinding";
 import { useAppDispatch } from "../../../hooks/reduxHooks";

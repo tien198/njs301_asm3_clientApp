@@ -1,4 +1,4 @@
-import type IProduct from "../../interfaces/IProduct";
+import type IProduct from "../../interfaces/product";
 
 import Container from "../../components/UI/Container";
 import ImgSide from "./comps/ImgSide";

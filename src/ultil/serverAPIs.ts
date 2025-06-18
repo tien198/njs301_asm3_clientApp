@@ -10,6 +10,10 @@ export enum ServerAPI {
     getCart = api + 'shop/cart',
     addToCart = api + 'shop/add-to-cart',
 
+    createOrder = api + 'shop/create-order',
+    getOrders = api + 'shop/orders',
+    getOrderById = api + 'shop/order',
+
     // auth
     signup = api + 'auth/signup/',
     login = api + 'auth/login/'

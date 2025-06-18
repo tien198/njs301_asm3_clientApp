@@ -1,27 +1,26 @@
-import type IProduct from "../../../interfaces/IProduct";
-import type ICartItem from "../interfaces/ICartItem";
+import type IProduct from "../../../interfaces/product";
+import type { ICartItem } from "../../../interfaces/cartItem";
 
 
-export default class CartItem implements ICartItem {
-    quantity?: string | number = 0
-    total?: string | number
+export default class CartItem implements Partial<ICartItem> {
+    productId?: string
+    quantity?: number = 0
+    lineTotal?: number
     totalCalc() {
-        this.total = Number(this.price) * Number(this.quantity)
-        return this.total
+        this.lineTotal = Number(this.price) * Number(this.quantity)
+        return this.lineTotal
     }
-    static create(product: IProduct, quantity?: number | string) {
+    static create(product: IProduct, quantity?: number | string): ICartItem {
         const item = new CartItem(product)
         item.quantity = Number(quantity) || 1
         item.totalCalc()
-        return item
+        return item as ICartItem
     }
     constructor(product: IProduct) {
         Object.assign(this, product)
         this.totalCalc()
     }
-    _id?: {
-        $oid?: string
-    }
+
     category?: string
     img1?: string
     img2?: string

@@ -23,7 +23,7 @@ import NameInput from '../formInputs/NameInput';
 import EmailInput from '../formInputs/EmailInput';
 import PasswordInput from '../formInputs/PasswordInput';
 import PhoneInput from '../formInputs/PhoneInput';
-import type IUser from '../../../interfaces/IUser';
+import type IUser from '../../../interfaces/user';
 import PasswordConfirmInput from '../formInputs/PasswordConfirmInput';
 
 

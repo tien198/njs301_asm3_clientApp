@@ -1,4 +1,4 @@
-import { ChangeEventHandler, Dispatch } from "react";
+import type { ChangeEventHandler, Dispatch } from "react";
 import useTwoWayBinding from "./useTwoWayBinding";
 import useValidate from "./useValidate";
 

@@ -1,4 +1,4 @@
-import type IProduct from "../../interfaces/IProduct";
+import type IProduct from "../../interfaces/product";
 
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { show as showAction } from "../../store/modalSlice";

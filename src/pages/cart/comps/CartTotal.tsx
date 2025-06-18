@@ -12,12 +12,12 @@ interface Props {
     className: string
 }
 function CartTotal({ className }: Props) {
-    const total = useAppSelector(({ cartTotal }) => cartTotal.total)
-    const cartItems = useAppSelector(({ cart }) => cart)
+    const total = useAppSelector(state => state.cartTotal.total)
+    const cartItems = useAppSelector(state => state.cart.items)
 
     const dispatch = useAppDispatch()
     useEffect(() => {
-        dispatch(setTotal(cartItems.items))
+        dispatch(setTotal(cartItems))
     }, [cartItems])
 
     const [coupon, onChangeCoupon] = useTwoWayBinding<string>()

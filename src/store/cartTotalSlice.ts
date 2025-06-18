@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type ICartItem from "./storeModels/interfaces/ICartItem";
+import type { ICartItem } from "../interfaces/cartItem";
 
 const initialState = {
     total: 0
@@ -12,7 +12,7 @@ const cartTotalSlice = createSlice({
         setTotal(state, action: PayloadAction<ICartItem[]>) {
             let total: number = 0
             for (const i of action.payload) {
-                total += Number(i.total!)
+                total += Number(i.lineTotal!)
             }
             state.total = total
         }

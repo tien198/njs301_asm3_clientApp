@@ -1,5 +1,5 @@
 import store from "../../store"
-import { removeAllItem } from "../../store/cartSlice"
+import { clearCart } from "../../store/cartSlice"
 import StorageEnum from "./StorageEnum"
 
 export function getLocalStorageCartItems() {
@@ -11,7 +11,7 @@ export function addLocalStorageCartItems(items: any[]) {
     localStorage.setItem(StorageEnum.cartItems, jsonString)
 }
 
-export function removeLocalStorageCartItems() {
+export function clearLocalStorageCartItems() {
     localStorage.removeItem(StorageEnum.cartItems)
-    store.dispatch(removeAllItem())
+    store.dispatch(clearCart())
 }
