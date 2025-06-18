@@ -1,6 +1,8 @@
 type getArgs = { url: string, includeCookie?: boolean, token?: string }
 
 export default async function getDefer<T>({ url, includeCookie = false, token }: getArgs): Promise<T | null> {
+    try {
+
 
         const headersInit: Record<string, any> = {}
         if (token)
@@ -17,4 +19,8 @@ export default async function getDefer<T>({ url, includeCookie = false, token }:
         }
 
         return await response.json()
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
 }
