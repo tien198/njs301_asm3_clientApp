@@ -7,6 +7,7 @@ import { Fallback } from "../components/UI/Fallback";
 const ShopRoot = lazy(() => import("../layout/shopLayout"));
 const Shop = lazy(() => import("../pages/shop"));
 
+
 const shopRoute: RouteObject = {
     path: ClientRoutes.Shop,
     element: (

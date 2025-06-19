@@ -1,4 +1,4 @@
-import type IUser from "../interfaces/user";
+import type { IUser } from "../interfaces/user";
 
 export default class User implements IUser {
     static fromObject(user: any) {

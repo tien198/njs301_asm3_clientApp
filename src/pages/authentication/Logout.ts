@@ -1,7 +1,7 @@
 import { redirect } from "react-router";
-import { removeUserInfor } from "../../ultil/storageUltil/authenInfor";
+import { clearUserInfor } from "../../ultil/storageUltil/authenInfor";
 
 export function action() {
-    removeUserInfor()
+    clearUserInfor()
     return redirect('/')
 }

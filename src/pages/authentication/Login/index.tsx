@@ -1,4 +1,5 @@
-import type IAuthenError from '../../../interfaces/response/error/authenError';
+import type { IAuthenError } from '../../../interfaces/response/error/authenError';
+import type ErrorRes from '../../../models/errorResponse';
 
 import { useEffect, useState } from 'react';
 import { Link, useActionData, useNavigation, useSubmit } from 'react-router';
@@ -18,7 +19,6 @@ import { isNotNull } from '../../../ultil/inputValidationUltil/validate';
 import classes from '../Authen.module.scss'
 import EmailInput from '../formInputs/EmailInput';
 import PasswordInput from '../formInputs/PasswordInput';
-import ErrorRes from '../../../models/errorResponse';
 
 
 function Login() {

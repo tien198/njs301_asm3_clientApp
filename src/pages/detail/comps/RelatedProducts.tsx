@@ -2,7 +2,7 @@ import { Await, useLoaderData } from "react-router";
 import ProductsContainer from "../../../components/product/ProductsContainer";
 import type { DetailProps } from "..";
 import { Suspense, useEffect, useState } from "react";
-import type IProduct from "../../../interfaces/product";
+import type { IProduct } from "../../../interfaces/product";
 import ProductItem from "../../../components/product/ProductIem";
 import ProductsFallback from "../../../components/product/ProductsFallback";
 import ProductModal from "../../../components/modal/ProductModal";

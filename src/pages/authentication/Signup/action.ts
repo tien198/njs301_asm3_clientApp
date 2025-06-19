@@ -1,4 +1,4 @@
-import type IAuthenResponse from "../../../interfaces/response/fullfill/authenResponse"
+import type { IAuthenResponse } from "../../../interfaces/response/fullfill/authenResponse"
 
 import { redirect, type ActionFunctionArgs } from "react-router"
 import { ServerAPI } from "../../../ultil/serverAPIs"

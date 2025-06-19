@@ -1,4 +1,4 @@
-import type IProduct from "../../../interfaces/product";
+import type { IProduct } from "../../../interfaces/product";
 import type { ICartItem } from "../../../interfaces/cartItem";
 
 

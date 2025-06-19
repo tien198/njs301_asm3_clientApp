@@ -13,8 +13,10 @@ export function loader(): CartLoader {
         if (storeCart.length > 0) {
             return { cart: Promise.resolve(storeCart) }
         }
-        const cart = getDefer<ICartItem[]>({ url: API.getCart, includeCookie: true })
-            .catch(error => console.error(error))
+        const cart = getDefer<ICartItem[]>(API.getCart, true)
+            .catch(error => {
+                console.error(error); return null;
+            })
 
         return { cart }
     } catch (error) {

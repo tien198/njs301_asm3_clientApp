@@ -1,5 +1,5 @@
 import type { ICartItem } from "../../../interfaces/cartItem";
-import type IProduct from "../../../interfaces/product";
+import type { IProduct } from "../../../interfaces/product";
 
 export interface ICartState {
     items: ICartItem[]

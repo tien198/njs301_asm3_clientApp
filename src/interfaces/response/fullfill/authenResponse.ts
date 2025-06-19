@@ -1,6 +1,6 @@
-import type IUser from "../../user"
+import type { IUser } from "../../user"
 
-export default interface IAuthenResponse {
+export interface IAuthenResponse {
     message: string
     user: IUser
 }

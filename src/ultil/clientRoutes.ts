@@ -5,6 +5,8 @@ export enum ClientRoutes {
     Detail = 'detail',
     Cart = 'cart',
     Checkout = 'checkout',
+    Orders = 'orders',
+    Order = 'order',
     Login = 'login',
     Signup = 'signup',
     Logout = 'logout',
@@ -16,6 +18,9 @@ export enum ClientRoutes_absolute {
     Detail = '/' + ClientRoutes.Detail,
     Cart = '/' + ClientRoutes.Cart,
     Checkout = '/' + ClientRoutes.Checkout,
+    Orders = '/' + ClientRoutes.Orders,
+    Order = '/' + ClientRoutes.Order,
+
     Login = '/' + ClientRoutes.Login,
     Signup = '/' + ClientRoutes.Signup,
     Logout = '/' + ClientRoutes.Logout,

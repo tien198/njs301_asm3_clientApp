@@ -68,7 +68,7 @@ function NavRightUl() {
                 </NavLink>
             </li>}
             {isLogin && <li>
-                <NavLink to={ClientRoutes.Login} className={navLinkStateClass}>
+                <NavLink to={ClientRoutes.Orders} className={navLinkStateClass}>
                     <FontAwesomeIcon icon={faUser} className="mr-1" />
                     <span className="hidden md:inline capitalize">{userName}</span>
                 </NavLink>

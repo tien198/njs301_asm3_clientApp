@@ -1,4 +1,5 @@
-import type IAuthenError from '../../../interfaces/response/error/authenError';
+import type { IAuthenError } from '../../../interfaces/response/error/authenError';
+import type { IUser } from '../../../interfaces/user';
 import type ErrorRes from '../../../models/errorResponse';
 
 import { useEffect, useState } from 'react';
@@ -23,7 +24,6 @@ import NameInput from '../formInputs/NameInput';
 import EmailInput from '../formInputs/EmailInput';
 import PasswordInput from '../formInputs/PasswordInput';
 import PhoneInput from '../formInputs/PhoneInput';
-import type IUser from '../../../interfaces/user';
 import PasswordConfirmInput from '../formInputs/PasswordConfirmInput';
 
 

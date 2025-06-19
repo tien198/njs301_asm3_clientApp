@@ -1,7 +1,8 @@
 import { type ActionFunctionArgs, redirect } from "react-router"
+import type { IAuthenResponse } from "../../../interfaces/response/fullfill/authenResponse"
+
 import { ServerAPI } from "../../../ultil/serverAPIs"
 import { addUserInfor } from "../../../ultil/storageUltil/authenInfor"
-import type IAuthenResponse from "../../../interfaces/response/fullfill/authenResponse"
 
 
 export async function action(args: ActionFunctionArgs) {

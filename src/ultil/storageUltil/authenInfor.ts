@@ -1,5 +1,5 @@
-import type IAuthenResponse from "../../interfaces/response/fullfill/authenResponse";
-import type IUser from "../../interfaces/user";
+import type { IAuthenResponse } from "../../interfaces/response/fullfill/authenResponse";
+import type { IUser } from "../../interfaces/user";
 
 import { clearLocalStorageCartItems } from "./cartItemsUltil";
 import StorageEnum from "./StorageEnum";

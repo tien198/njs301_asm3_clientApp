@@ -1,5 +1,5 @@
 import type { DetailProps } from ".."
-import type IProduct from "../../../interfaces/product"
+import type { IProduct } from "../../../interfaces/product"
 
 import { Suspense, useEffect, useState } from "react"
 import { Await, useAsyncValue, useLoaderData } from "react-router"

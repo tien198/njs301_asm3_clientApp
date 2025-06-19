@@ -6,6 +6,8 @@ import { Fallback } from '../components/UI/Fallback'
 const CartRoot = lazy(() => import('../layout/conversionActionLayout'))
 const Cart = lazy(() => import('../pages/cart'))
 const Checkout = lazy(() => import('../pages/checkout'))
+const Orders = lazy(() => import('../pages/orders'))
+const Order = lazy(() => import('../pages/order'))
 
 
 const cartRoute: RouteObject = {
@@ -30,6 +32,24 @@ const cartRoute: RouteObject = {
             </Suspense>,
             action: (args) => import('../pages/checkout/action').then(i => i.checkoutAction(args)),
         },
+        {
+            path: ClientRoutes.Orders,
+            element: (
+                <Suspense fallback={<Fallback />}>
+                    <Orders />
+                </Suspense>
+            ),
+            loader: () => import('../pages/orders/loader').then(i => i.loader()),
+        },
+        {
+            path: ClientRoutes.Order + '/:id',
+            element: (
+                <Suspense fallback={<Fallback />}>
+                    <Order />
+                </Suspense>
+            ),
+            loader: (args) => import('../pages/order/loader').then(i => i.loader(args)),
+        }
     ]
 }
 

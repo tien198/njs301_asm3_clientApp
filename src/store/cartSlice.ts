@@ -60,7 +60,7 @@ const cartSlice = createSlice({
         /** @param action -  payload is an object {id:string, quantity:number} */
         updateItemQuantity: function (state: ICartState, action: PayloadAction<ItemWithQuantityPayload>) {
             const updItemsList = [...state.items]
-            const updIndex = state.items.findIndex(i => i.id === action.payload.item.id)
+            const updIndex = state.items.findIndex(i => i.productId === action.payload.item.id)
             const updItem = updItemsList[updIndex]
 
             if (updItem) {
@@ -83,7 +83,7 @@ const cartSlice = createSlice({
 
         /** @param action - payload is productId */
         removeItem: function (state: ICartState, action: PayloadAction<string>) {
-            state.items = state.items.filter(i => i.id !== action.payload)
+            state.items = state.items.filter(i => i.productId !== action.payload)
         },
 
         clearCart: function (state: ICartState) {
