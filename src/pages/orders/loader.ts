@@ -7,10 +7,7 @@ export type OrdersLoader = {
 }
 
 export function loader(): OrdersLoader {
-    const orders = getDefer<IOrder[]>(API.getOrders, true)
-        .catch(err => {
-            console.error(err); return null;
-        })
+    const orders = getDefer<IOrder[]>({ url: API.getOrders, includeCookie: true })
 
     return {
         orders: orders

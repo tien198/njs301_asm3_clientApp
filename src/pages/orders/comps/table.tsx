@@ -33,7 +33,7 @@ export default function Table({ orders }: Props) {
                                     <Row key={index} order={order} isGray={index % 2 !== 0} />
                                 ))
                                 : <tr>
-                                    <td colSpan={10} className="text-center"><Fallback>Loading...</Fallback></td>
+                                    <td colSpan={10} className="text-center h-24"><Fallback>Loading...</Fallback></td>
                                 </tr>
                         }
                     </tbody>

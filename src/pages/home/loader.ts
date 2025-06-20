@@ -14,7 +14,7 @@ export type productsLoader = {
 export function loader(loaderArgs: LoaderFunctionArgs): productsLoader {
   loaderInitiation(loaderArgs)
 
-  const trendingProducts = getDefer<IProduct[]>(API.products)
+  const trendingProducts = getDefer<IProduct[]>({ url:  API.products })
 
   return ({ trendingProducts })
 }

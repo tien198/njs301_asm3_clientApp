@@ -12,7 +12,7 @@ export function loader(args: LoaderFunctionArgs): productLoader {
     loaderInitiation(args, false)
     const paramName = Object.keys(args.params)[0]
 
-    const product = getDefer<IProduct>(API.product + args.params[paramName]!, true)
+    const product = getDefer<IProduct>({ url: API.product + args.params[paramName]!, includeCookie: true })
         .catch(err => {
             console.error(err); return null;
         })

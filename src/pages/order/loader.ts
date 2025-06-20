@@ -10,9 +10,10 @@ export type OrderLoader = {
 
 export function loader(args: LoaderFunctionArgs): OrderLoader {
     logoAnimationAcceptDispath(false)
-    const order = getDefer<IOrder>(API.getOrderById + '/' + args.params.id, true)
-        .catch(err => {
-            console.error(err); return null;
-        })
+    const order = getDefer<IOrder>({
+        url: API.getOrderById + '/' + args.params.id,
+        includeCookie: true
+    })
+
     return { order }
 }

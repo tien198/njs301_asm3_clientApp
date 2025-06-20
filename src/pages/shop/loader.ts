@@ -13,7 +13,7 @@ export type productsLoader = {
 export function allLoader(loaderArgs: LoaderFunctionArgs): productsLoader {
     loaderInitiation(loaderArgs)
 
-    const products = getDefer<IProduct[]>(API.products)
+    const products = getDefer<IProduct[]>({ url: API.products })
         .catch(error => {
             console.error(error); return null;
         })
@@ -32,7 +32,7 @@ type categorizedProductLoader = {
 export function categorizedProductsLoader(args: LoaderFunctionArgs): categorizedProductLoader {
     loaderInitiation(args)
     const params = args.params
-    const products = getDefer<IProduct[]>(API.findByCategory + params.category)
+    const products = getDefer<IProduct[]>({ url: API.findByCategory + params.category })
         .catch(error => {
             console.error(error); return null;
         })
