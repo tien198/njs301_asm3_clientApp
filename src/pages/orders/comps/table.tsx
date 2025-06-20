@@ -1,3 +1,4 @@
+import Fallback from "../../../components/UI/Fallback";
 import type { IOrder } from "../../../interfaces/order";
 
 import Row from "./row";
@@ -32,7 +33,7 @@ export default function Table({ orders }: Props) {
                                     <Row key={index} order={order} isGray={index % 2 !== 0} />
                                 ))
                                 : <tr>
-                                    <td colSpan={10} className="text-center">Loading...</td>
+                                    <td colSpan={10} className="text-center"><Fallback>Loading...</Fallback></td>
                                 </tr>
                         }
                     </tbody>

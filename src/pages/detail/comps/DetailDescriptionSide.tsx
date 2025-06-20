@@ -1,7 +1,7 @@
 import type { DetailProps } from "..";
 
 import { Suspense } from "react";
-import { Fallback } from "../../../components/UI/Fallback";
+import Fallback from "../../../components/UI/Fallback";
 import { Await, useLoaderData } from "react-router";
 import type { productLoader } from "../loader";
 

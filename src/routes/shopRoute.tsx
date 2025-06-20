@@ -2,7 +2,7 @@ import type { RouteObject } from "react-router";
 
 import { lazy, Suspense } from "react";
 import { ClientRoutes } from "../ultil/clientRoutes";
-import { Fallback } from "../components/UI/Fallback";
+import Fallback from "../components/UI/Fallback";
 
 const ShopRoot = lazy(() => import("../layout/shopLayout"));
 const Shop = lazy(() => import("../pages/shop"));

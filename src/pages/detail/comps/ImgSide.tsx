@@ -3,7 +3,8 @@ import type { IProduct } from "../../../interfaces/product"
 
 import { Suspense, useEffect, useState } from "react"
 import { Await, useAsyncValue, useLoaderData } from "react-router"
-import { Fallback } from "../../../components/UI/Fallback"
+import Fallback from "../../../components/UI/Fallback"
+import type { productLoader } from "../loader"
 
 interface ThumbnailProps {
     imgSrc?: string
@@ -33,16 +34,16 @@ interface ImageProps {
     setCurrentImg: Function
 }
 function Image({ currentImg, setCurrentImg }: ImageProps) {
-    const loaded: any = useAsyncValue()
+    const prod = useAsyncValue() as IProduct
 
     useEffect(() => {
-        setCurrentImg(loaded.img1)
-    }, [loaded])
-    return <img src={currentImg} alt={loaded.name} className="h-full w-full object-cover fade-in" />
+        if (prod && prod.img1) setCurrentImg(prod.img1)
+    }, [prod])
+    return <img src={currentImg} alt={prod?.name} className="h-full w-full object-cover fade-in" />
 }
 
 export default function ImgSide({ className }: DetailProps) {
-    const { product }: any = useLoaderData()
+    const { product }: productLoader = useLoaderData()
     const [currentImg, setCurrentImg] = useState<string>('')
 
     return (
@@ -52,8 +53,9 @@ export default function ImgSide({ className }: DetailProps) {
             <div className="col-start-1 col-end-2">
                 <Suspense fallback={<Fallback />}>
                     <Await resolve={product}
-                        children={(loaded: IProduct) =>
-                            <ThumbnailList product={loaded} onHandleThumbnail={setCurrentImg} />
+                        children={(prod) => prod
+                            ? <ThumbnailList product={prod} onHandleThumbnail={setCurrentImg} />
+                            : <Fallback />
                         }>
                     </Await>
                 </Suspense>

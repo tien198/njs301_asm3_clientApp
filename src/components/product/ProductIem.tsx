@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../hooks/reduxHooks";
 import { show as showAction } from "../../store/modalSlice";
 import { setProduct } from "../../store/productModalSlice";
 import convertToFraction from "../../ultil/convertToFraction";
-import { Fallback } from "../UI/Fallback";
+import Fallback from "../UI/Fallback";
 // css
 import classes from "./ProductItem.module.css";
 

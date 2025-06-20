@@ -1,10 +1,12 @@
+import Fallback from "../../../components/UI/Fallback";
 import type { IOrderItem } from "../../../interfaces/order/orderItem";
 
 type Props = {
-    items: IOrderItem[]
+    items?: IOrderItem[]
+    isLoading?: boolean
 }
 
-export default function ItemsList({ items }: Props) {
+export default function ItemsList({ items, isLoading = true }: Props) {
     return (
         <div className="overflow-x-auto">
             <table className="min-w-full table-auto text-center border-collapse">
@@ -18,17 +20,29 @@ export default function ItemsList({ items }: Props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {items.map((item, idx) => (
-                        <tr key={idx} className="border-t text-sm">
-                            <td className="p-3">{item.productId}</td>
-                            <td className="p-3">
-                                <img src={item.imageUrl} alt={item.name} className="w-64 h-auto mx-auto" />
+                    {items && items.length > 0
+                        ? items.map((item, idx) => (
+                            <tr key={idx} className="border-t text-sm">
+                                <td className="p-3">{item.productId}</td>
+                                <td className="p-3">
+                                    <img src={item.imageUrl} alt={item.name} className="w-64 h-64 mx-auto" />
+                                </td>
+                                <td className="p-3">{item.name}</td>
+                                <td className="p-3">{item.priceInOrderTime.toLocaleString()} VND</td>
+                                <td className="p-3">{item.quantity}</td>
+                            </tr>
+                        ))
+                        : <tr>
+                            <td colSpan={5} className="p-3 h-40">
+                                <p>No items</p>
                             </td>
-                            <td className="p-3">{item.name}</td>
-                            <td className="p-3">{item.priceInOrderTime.toLocaleString()} VND</td>
-                            <td className="p-3">{item.quantity}</td>
                         </tr>
-                    ))}
+                    }
+                    {isLoading && <tr>
+                        <td colSpan={5} className="p-3 h-40">
+                            <Fallback />
+                        </td>
+                    </tr>}
                 </tbody>
             </table>
         </div>

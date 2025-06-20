@@ -3,7 +3,7 @@ import type { IOrderItem } from "../interfaces/order/orderItem"
 import type { IShippingTracking } from "../interfaces/order/shippingTracking"
 
 export default class Order implements Partial<IOrder> {
-    constructor() { }
+    constructor() {    }
     id: string = ''
     userId: string = ''
     userName: string = ''

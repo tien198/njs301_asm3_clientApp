@@ -1,7 +1,7 @@
 import type { RouteObject } from 'react-router'
 import { ClientRoutes } from '../ultil/clientRoutes'
 import { lazy, Suspense } from 'react'
-import { Fallback } from '../components/UI/Fallback'
+import Fallback from '../components/UI/Fallback'
 
 const CartRoot = lazy(() => import('../layout/conversionActionLayout'))
 const Cart = lazy(() => import('../pages/cart'))

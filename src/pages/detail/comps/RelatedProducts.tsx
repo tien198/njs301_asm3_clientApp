@@ -18,7 +18,7 @@ function RelatedProducts({ product, className, isFallback = false }: DetailProps
     // prevent recurion if `isFallback == true` product undefind lead to infinity loop
     !isFallback && useEffect(() => {
         (async function () {
-            const relatedProducts = await getDefer<IProduct[]>({ url: API.findByCategory + product!.category })
+            const relatedProducts = await getDefer<IProduct[]>(API.findByCategory + product!.category, true)
             setRelatedProds(relatedProducts || [])
         })()
     }, [product])
