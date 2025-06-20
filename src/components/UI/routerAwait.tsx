@@ -6,7 +6,7 @@ type Props = {
     resolve: Promise<any>
 } & PropsWithChildren
 
-export default function ({ resolve, children }: Props) {
+export default function RouterAwait({ resolve, children }: Props) {
 
     return (
         <Suspense fallback={<Fallback />}>

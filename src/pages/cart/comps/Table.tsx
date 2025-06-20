@@ -4,18 +4,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks"
 import { removeItem, setCurrentItemIndex } from "../../../store/cartSlice"
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
-import convertToFraction from "../../../ultil/convertToFraction"
 import { show } from "../../../store/modalSlice"
 import CartItemModal from "./CartItemModal"
-import CartItemQuantityInput from "./CartItemQuantityInput"
+import QuantityInput from "./QuantityInput"
+import { useSubmit } from "react-router"
+import { ClientRoutes_absolute as AbsRoute } from "../../../ultil/clientRoutes"
 
 interface Props {
     className: string
 }
-export default function CartItemsTable({ className }: Props) {
+export default function Table({ className }: Props) {
     const cartItems = useAppSelector(({ cart }) => cart.items)
+
+    const submit = useSubmit()
     const dispatch = useAppDispatch()
-    const remove = (i: ICartItem) => dispatch(removeItem(i.id || ''))
+    const removeAction = (i: ICartItem) => {
+        dispatch(removeItem(i.productId || ''))
+        submit(null, {
+            method: 'delete',
+            action: AbsRoute.Cart + '/' + i.productId,
+            encType: 'application/json',
+            // replace: true,
+            // preventScrollReset: true
+        })
+    }
 
     function showModal(index: number) {
         dispatch(setCurrentItemIndex(index))
@@ -24,7 +36,7 @@ export default function CartItemsTable({ className }: Props) {
 
     return (
         <>
-            <CartItemModal />
+            <CartItemModal removeAction={removeAction} />
             <table className={`text-center ${className} `}>
                 <thead className="p-4">
                     <tr className=" uppercase bg-zinc-50">
@@ -38,20 +50,20 @@ export default function CartItemsTable({ className }: Props) {
                 </thead>
                 <tbody>
                     {cartItems.map((i, index) =>
-                        <tr key={i.productId} >
+                        <tr key={i.productId}>
                             <td onClick={() => showModal(index)} className="hover:cursor-pointer py-4">
                                 <img src={i.img1} alt={i.name} className="mx-auto md:w-48" />
                             </td>
                             <td onClick={() => showModal(index)} className="hover:cursor-pointer">
                                 {i.name}
                             </td>
-                            <td className="hidden md:table-cell text-zinc-500">{convertToFraction(i.price)} VNĐ</td>
+                            <td className="hidden md:table-cell text-zinc-500">{i.price?.toLocaleString()} VNĐ</td>
                             <td>
-                                <CartItemQuantityInput item={i} />
+                                <QuantityInput item={i} />
                             </td>
-                            <td className="text-zinc-500">{convertToFraction(Number(i.lineTotal))} VNĐ</td>
+                            <td className="text-zinc-500">{i.lineTotal.toLocaleString()} VNĐ</td>
                             <td className="hidden md:table-cell">
-                                <button onClick={() => remove(i)}>
+                                <button onClick={() => removeAction(i)}>
                                     <FontAwesomeIcon icon={faTrashCan} className="text-zinc-400" />
                                 </button>
                             </td>

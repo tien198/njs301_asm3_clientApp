@@ -23,7 +23,12 @@ const cartRoute: RouteObject = {
                 <Cart />
             </Suspense>,
             loader: () => import('../pages/cart/loader').then(i => i.loader()),
-            action: (args) => import('../pages/cart/action').then(i => i.addToCartAction(args)),
+            action: (args) => import('../pages/cart/action').then(i => i.cartAction(args)),
+        },
+        // remove item from cart Route
+        {
+            path: ClientRoutes.Cart + '/:productId',
+            action: (args) => import('../pages/cart/action').then(i => i.cartAction(args)),
         },
         {
             path: ClientRoutes.Checkout,

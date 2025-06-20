@@ -2,21 +2,24 @@ import type { ICartState } from "../../../store/storeModels/interfaces/ICartStat
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal, { useHideModal } from "../../../components/modal/Modal";
-import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
-import { removeItem } from "../../../store/cartSlice";
+import { useAppSelector } from "../../../hooks/reduxHooks";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import convertToFraction from "../../../ultil/convertToFraction";
-import CartItemQuantityInput from "./CartItemQuantityInput";
+import CartItemQuantityInput from "./QuantityInput";
 import type { ICartItem } from "../../../interfaces/cartItem";
 
-export default function CartItemModal() {
+
+type Props = {
+    removeAction: (productId: ICartItem) => void
+}
+
+export default function CartItemModal({ removeAction }: Props) {
     const { items: itemsList, currentItemIndex: curIndex }: ICartState = useAppSelector(({ cart }) => cart)
     const item = itemsList[curIndex] || {}
 
     const hideModal = useHideModal()
-    const dispatch = useAppDispatch()
-    const remove = (i: ICartItem) => {
-        dispatch(removeItem(i.productId || ''))
+    const remove = (item: ICartItem) => {
+        removeAction(item)
         hideModal()
     }
 

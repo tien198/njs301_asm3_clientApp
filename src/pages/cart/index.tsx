@@ -1,6 +1,6 @@
 import type { CartLoader } from './loader';
 
-import CartItemsTable from './comps/CartItemsTable';
+import Table from './comps/Table';
 import CartTotal from './comps/CartTotal';
 import NavigationAcitons from '../../layout/conversionActionLayout/comps/NavigationActions';
 
@@ -26,7 +26,7 @@ export default function Cart() {
     }, [cart])
     return (
         <div className={classes['cart-layout']}>
-            <CartItemsTable className={classes['cart']} />
+            <Table className={classes['cart']} />
             <CartTotal className={classes['total']} />
             <NavigationAcitons className={classes['rest']} />
         </div>

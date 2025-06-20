@@ -7,6 +7,6 @@ export interface ICartState {
 }
 
 export interface ItemWithQuantityPayload {
-    item: IProduct
+    item: ICartItem | IProduct
     quantity: number 
 }

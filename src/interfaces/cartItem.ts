@@ -1,6 +1,6 @@
 import type { IProduct } from "./product";
 
-export interface ICartItem extends Partial<IProduct> {
+export interface ICartItem extends Partial<Omit<IProduct, 'id'>> {
     productId: string; // ID sản phẩm
     name?: string;
     category?: string; // Danh mục sản phẩm

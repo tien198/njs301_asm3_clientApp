@@ -8,18 +8,11 @@ export type CartLoader = {
 }
 
 export function loader(): CartLoader {
-    try {
-        const storeCart = store.getState().cart.items
-        if (storeCart.length > 0) {
-            return { cart: Promise.resolve(storeCart) }
-        }
-        const cart = getDefer<ICartItem[]>({ url: API.getCart, includeCookie: true })
-            .catch(error => {
-                console.error(error); return null;
-            })
-
-        return { cart }
-    } catch (error) {
-        return { cart: Promise.resolve(null) }
+    const storeCart = store.getState().cart.items
+    if (storeCart.length > 0) {
+        return { cart: Promise.resolve(storeCart) }
     }
+    const cart = getDefer<ICartItem[]>({ url: API.cart, includeCookie: true })
+
+    return { cart }
 }

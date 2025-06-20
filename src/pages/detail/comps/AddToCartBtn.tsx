@@ -7,6 +7,7 @@ import { useFetcher } from "react-router";
 import { ClientRoutes_absolute as AbsRoute } from "../../../ultil/clientRoutes";
 import QuantityInput from "../../../components/UI/QuantityInput";
 import DarkButton from "../../../components/UI/DarkButton";
+import type { ICartItem } from "../../../interfaces/cartItem";
 
 interface Props {
     product: IProduct
@@ -19,7 +20,7 @@ export default function AddToCartBtn({ product }: Props) {
     const fetcher = useFetcher();
     const dispatch = useAppDispatch()
     const addToCart = () => {
-        dispatch(addItemWithQuantity({ item: product, quantity: val }))
+        dispatch(addItemWithQuantity({ item: product as ICartItem, quantity: val }))
         fetcher.submit(
             { productId: product.id!, quantity: val },
             { method: 'post', action: AbsRoute.Cart, encType: 'application/json' }

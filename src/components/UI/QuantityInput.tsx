@@ -15,7 +15,7 @@ export default function QuantityInput({ val, onChangeVal, increment, decrement }
             <button onClick={decrement}>
                 <FontAwesomeIcon icon={faCaretLeft} color="#000" fontSize="1.25rem" />
             </button>
-            <input type="number" value={val} onChange={onChangeVal} className="px-4 py-2 text-black outline-none max-w-14" />
+            <input type="number" value={val || 0} onChange={onChangeVal} className="px-4 py-2 text-black outline-none max-w-14" />
             <button onClick={increment}>
                 <FontAwesomeIcon icon={faCaretRight} color="#000" fontSize="1.25rem" />
             </button>

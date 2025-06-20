@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import { useEffect, useState } from "react";
 import { setTotal } from "../../../store/cartTotalSlice";
-import convertToFraction from "../../../ultil/convertToFraction";
 import useTwoWayBinding from "../../../hooks/useTwoWayBinding";
 import DarkButton from "../../../components/UI/DarkButton";
 import TotalSideLayout from "../../../layout/conversionActionLayout/comps/TotalSideLayout";
@@ -29,12 +28,12 @@ function CartTotal({ className }: Props) {
             <div>
                 <div className="flex justify-between">
                     <h6 >Subtotal</h6>
-                    <span className="text-sm text-zinc-500">{convertToFraction(total)} VND</span>
+                    <span className="text-sm text-zinc-500">{total.toLocaleString()} VND</span>
                 </div>
                 <hr className="my-2 bg-zinc-500" />
                 <div className="flex justify-between">
                     <h6 className="text-">Total</h6>
-                    <span >{convertToFraction(total)} VND</span>
+                    <span >{total.toLocaleString()} VND</span>
                 </div>
             </div>
             <div>

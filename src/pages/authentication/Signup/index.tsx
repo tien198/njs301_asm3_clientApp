@@ -1,5 +1,4 @@
 import type { IAuthenError } from '../../../interfaces/response/error/authenError';
-import type { IUser } from '../../../interfaces/user';
 import type ErrorRes from '../../../models/errorResponse';
 
 import { useEffect, useState } from 'react';
@@ -25,6 +24,7 @@ import EmailInput from '../formInputs/EmailInput';
 import PasswordInput from '../formInputs/PasswordInput';
 import PhoneInput from '../formInputs/PhoneInput';
 import PasswordConfirmInput from '../formInputs/PasswordConfirmInput';
+import type { UserRegister } from './types/userRegister';
 
 
 function Authenticate() {
@@ -40,8 +40,8 @@ function Authenticate() {
     const nameErrorMsg = useValidate('Name', name, [isNotNull])
     const emailErrorMsg = useValidate('Email', email, [isNotNull])
     const passwordErrorMsg = useValidate('Password', password, [isNotNull, isMinLength.bind(null, 8)])
-    const phoneErrorMsg = useValidate('Phone', phone, [isNotNull])
     const passwordConfirmErrorMsg = useValidate('Password Confirm', passwordConfirm, [isNotNull, isMatch.bind(null, 'Password', password)])
+    const phoneErrorMsg = useValidate('Phone', phone, [isNotNull])
 
     // Validate that email is unique
     const submit = useSubmit()
@@ -63,10 +63,10 @@ function Authenticate() {
         e.preventDefault()
         setIsSubmited(true)
 
-        if (nameErrorMsg || emailErrorMsg || passwordErrorMsg || phoneErrorMsg || uniqueEmailMsg)
+        if (nameErrorMsg || emailErrorMsg || passwordErrorMsg || passwordConfirmErrorMsg || phoneErrorMsg || uniqueEmailMsg)
             return null
 
-        const user: IUser = { email, name, phone }
+        const user: UserRegister = { email, name, password, confirmPassword: passwordConfirm, phone }
 
         submit(user as any, {
             action: location.pathname,

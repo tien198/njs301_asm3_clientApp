@@ -1,6 +1,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { ICartState, ItemWithQuantityPayload } from './storeModels/interfaces/ICartState';
 import type { ICartItem } from '../interfaces/cartItem';
+import type { IProduct } from '../interfaces/product';
 
 
 const initialState: ICartState = {
@@ -23,18 +24,18 @@ const cartSlice = createSlice({
             // updItemsList : updated Items List
             const updItemsList = [...state.items]
             // exIndex : existed Index
-            const exIndex = state.items.findIndex(i => i.productId === action.payload.item.id)
+            const exIndex = state.items.findIndex(i => i.productId === (action.payload.item as IProduct).id)
             const exItem = updItemsList[exIndex]
             const payload = action.payload
 
             if (exItem) {
-                const newQty = +exItem.quantity + +payload.quantity
+                const newQty = exItem.quantity + payload.quantity
 
                 if (newQty >= 0) {
                     // const updItem = CartItem.create(item, amountQuantity)
                     const updItem: ICartItem = {
                         ...payload.item,
-                        productId: payload.item.id!,
+                        productId: (payload.item as IProduct).id!,
                         quantity: newQty,
                         lineTotal: +payload.item.price! * newQty
                     }
@@ -47,7 +48,7 @@ const cartSlice = createSlice({
             else if (payload.quantity >= 0) {
                 const newItem = {
                     ...payload.item,
-                    productId: payload.item.id!,
+                    productId: (payload.item as IProduct).id!,
                     quantity: payload.quantity,
                     lineTotal: +payload.item.price! * payload.quantity
                 }
@@ -60,7 +61,7 @@ const cartSlice = createSlice({
         /** @param action -  payload is an object {id:string, quantity:number} */
         updateItemQuantity: function (state: ICartState, action: PayloadAction<ItemWithQuantityPayload>) {
             const updItemsList = [...state.items]
-            const updIndex = state.items.findIndex(i => i.productId === action.payload.item.id)
+            const updIndex = state.items.findIndex(i => i.productId === (action.payload.item as ICartItem).productId)
             const updItem = updItemsList[updIndex]
 
             if (updItem) {
