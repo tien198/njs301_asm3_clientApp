@@ -13,9 +13,7 @@ export default function Order() {
     useEffect(() => {
         loader.order.then(order => {
             if (order) {
-                setTimeout(() => {
-                    setOrder(order)
-                }, 1000)
+                setOrder(order)
             }
             setIsLoading(false)
         })

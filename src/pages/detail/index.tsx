@@ -25,7 +25,7 @@ export default function DetailIndex() {
                 <ImgSide className="md:col-start-1 md:col-end-3" />
                 <InforSide className="md:col-start-3 md:col-end-6" />
                 <DetailDescriptionSide className="mt-8 md:col-start-1 md:col-end-6" />
-                <RelatedProducts className="mt-8 md:col-start-1 md:col-end-6" />
+                <RelatedProducts className="mt-8 mb-32 md:col-start-1 md:col-end-6" />
             </div>
         </Container>
     );

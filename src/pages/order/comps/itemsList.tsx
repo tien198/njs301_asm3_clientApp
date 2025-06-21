@@ -20,8 +20,16 @@ export default function ItemsList({ items, isLoading = true }: Props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {items && items.length > 0
-                        ? items.map((item, idx) => (
+                    {isLoading
+                        ? <tr>
+                            <td colSpan={5} className="p-3 h-40">
+                                <Fallback className="h-10 w-32 block" />
+                            </td>
+                        </tr>
+                        :
+
+                        items && items.length > 0
+                        && items.map((item, idx) => (
                             <tr key={idx} className="border-t text-sm">
                                 <td className="p-3">{item.productId}</td>
                                 <td className="p-3">
@@ -32,17 +40,14 @@ export default function ItemsList({ items, isLoading = true }: Props) {
                                 <td className="p-3">{item.quantity}</td>
                             </tr>
                         ))
-                        : <tr>
+
+                    }
+                    {!isLoading && (items!.length === 0) &&
+                        <tr>
                             <td colSpan={5} className="p-3 h-40">
                                 <p>No items</p>
                             </td>
-                        </tr>
-                    }
-                    {isLoading && <tr>
-                        <td colSpan={5} className="p-3 h-40">
-                            <Fallback />
-                        </td>
-                    </tr>}
+                        </tr>}
                 </tbody>
             </table>
         </div>

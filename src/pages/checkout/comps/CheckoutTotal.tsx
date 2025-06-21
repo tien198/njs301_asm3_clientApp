@@ -27,7 +27,7 @@ export default function CheckoutTotal({ className }: HTMLAttributes<HTMLDivEleme
             <h4 className="text-2xl">Your order</h4>
             <div>
                 {items.map(i =>
-                    <Item name={i.name} price={i.price} quantity={i.quantity} key={i.id} />
+                    <Item name={i.name} price={i.price} quantity={i.quantity} key={i.productId} />
                 )}
                 <div className="flex justify-between">
                     <span>Total</span>
