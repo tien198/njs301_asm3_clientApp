@@ -10,7 +10,7 @@ const responseModalSlice = createSlice({
     name: 'response-modal',
     initialState,
     reducers: {
-        setResponse(state, action: PayloadAction<IRes>) {
+        setResponse(_, action: PayloadAction<IRes>) {
             return action.payload
         },
         resetResponse() {
