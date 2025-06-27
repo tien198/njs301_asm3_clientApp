@@ -2,7 +2,7 @@ import type { ChangeEvent } from "react"
 import type { ICartItem } from "../../../interfaces/cartItem"
 
 import { useAppDispatch } from "../../../hooks/reduxHooks"
-import { updateItemQuantity } from "../../../store/cartSlice"
+import { updateItemQuantity } from "../../../store/slices/cartSlice"
 import QuantityInput from "../../../components/UI/QuantityInput";
 
 interface Props {

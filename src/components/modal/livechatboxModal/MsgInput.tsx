@@ -5,18 +5,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons/faPaperPlane';
 import { faPaperclip } from '@fortawesome/free-solid-svg-icons/faPaperclip';
 import { faFaceSmile } from '@fortawesome/free-solid-svg-icons/faFaceSmile';
-import { useAppDispatch } from '../../../hooks/reduxHooks';
-import { msgAction } from '../../../store/livechatSlice';
-import { getUserInfor } from '../../../ultil/storageUltil/authenInfor';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
+import { msgAction } from '../../../store/slices/livechatSlice';
 
 export default function MsgInput() {
     const [msg, onChangeMsg, setMsg] = useTwoWayBinding('')
 
-    const userInfor = getUserInfor()
+    const userInfor = useAppSelector(state => state.authen)
     const dispatch = useAppDispatch()
     function sendMsg(e: FormEvent) {
         e.preventDefault()
-        dispatch(msgAction([1, userInfor?.email!, msg]))
+        dispatch(msgAction([1, userInfor.email!, msg]))
         setMsg('')
     }
     return (

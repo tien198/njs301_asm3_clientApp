@@ -55,7 +55,7 @@ const router = createBrowserRouter([
       },
       {
         path: ClientRoutes.Logout,
-        action: () => import('./pages/authentication/Logout').then(i => i.action())
+        action: (args) => import('./pages/authentication/Logout').then(i => i.action(args))
       },
     ]
   }

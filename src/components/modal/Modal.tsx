@@ -1,7 +1,7 @@
 import { type PropsWithChildren, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
-import { setHideClass } from "../../store/modalSlice";
+import { setHideClass } from "../../store/slices/modalSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 

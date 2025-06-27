@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type ErrorRes from "../models/errorResponse";
-import type { IRes } from "../interfaces/response";
+import type ErrorRes from "../../models/errorResponse";
+import type { IRes } from "../../interfaces/response";
 
 const initialState: ErrorRes = {
     statusText: '', status: 0, data: {}

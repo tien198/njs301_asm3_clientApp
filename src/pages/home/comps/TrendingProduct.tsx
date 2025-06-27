@@ -23,7 +23,7 @@ export default function TrendingProduct() {
           <Await resolve={loader.trendingProducts}>
             {(prods) => {
               if (!prods)
-                return <p>Failed to load products</p>
+                return <><p>Failed to load products</p><p>please check your network</p></>
 
               if (prods.length === 0)
                 return <p>No products found</p>

@@ -5,11 +5,16 @@ import Modal from "./Modal";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router";
 import { ClientRoutes_absolute } from "../../ultil/clientRoutes";
-import { hide } from "../../store/modalSlice";
+import { hide, type ModalType } from "../../store/slices/modalSlice";
 
 function ProductModal() {
-    const prodState = useAppSelector(({ productModal }) => productModal)
+    const prodState = useAppSelector(state => state.productModal)
+    const modalType = useAppSelector(state => state.modal.type)
     const dispatch = useAppDispatch()
+
+    if (modalType !== 'product' as ModalType)
+        return <></>
+
     return (
         <Modal >
             <div className="grid md:grid-cols-2 justify-center items-center gap-4 py-4">

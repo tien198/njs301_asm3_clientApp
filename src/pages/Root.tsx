@@ -4,6 +4,7 @@ import Footer from "../layout/Footer";
 import LiveChatIcon from "../components/modal/livechatboxModal/LiveChatIcon";
 import { ClientRoutes_absolute as Path } from "../ultil/clientRoutes";
 import { useEffect, useState } from "react";
+import ErrorModal from "../components/modal/ErrorModal";
 
 /**
  * This function is passed a path need to check and an array of pathNames will apply LiveChat component
@@ -42,6 +43,7 @@ export default function Root() {
                 {hasLiveChat && <LiveChatIcon />}
             </>
             <Footer />
+            <ErrorModal />
         </>
     );
 }

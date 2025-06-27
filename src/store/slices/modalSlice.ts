@@ -1,20 +1,26 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
-import type { RootState } from "."
+import type { RootState } from ".."
 
-interface ModalState {
+type ModalState = {
     hiddenClass: string
+    type: string
 }
 
+export type ModalType = 'error' | 'inform' | 'product'
+
 const initialState: ModalState = {
-    hiddenClass: 'hidden'
+    hiddenClass: 'hidden',
+    type: ''
 }
 
 const modalSlice = createSlice({
     name: 'modal',
     initialState,
     reducers: {
-        show(state) {
-            state.hiddenClass = ''
+        show<T extends string = ModalType>(state: ModalState, action: PayloadAction<T>) {
+            return {
+                type: action.payload, hiddenClass: ''
+            }
         },
         hide(state) {
             state.hiddenClass = 'hidden'

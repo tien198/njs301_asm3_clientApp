@@ -9,8 +9,8 @@ import classes from '../../layout/conversionActionLayout/CartLayout.module.scss'
 import { useLoaderData } from 'react-router';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../hooks/reduxHooks';
-import { setCart } from '../../store/cartSlice';
-import { setTotal } from '../../store/cartTotalSlice';
+import { setCart } from '../../store/slices/cartSlice';
+import { setTotal } from '../../store/slices/cartTotalSlice';
 
 
 export default function Cart() {
@@ -23,7 +23,7 @@ export default function Cart() {
                 dispatch(setTotal(i))
             }
         })
-    }, [cart])
+    }, [])
     return (
         <div className={classes['cart-layout']}>
             <Table className={classes['cart']} />

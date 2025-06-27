@@ -16,11 +16,12 @@ function RelatedProducts({ product, className, isFallback = false }: DetailProps
     const [relatedProds, setRelatedProds] = useState<IProduct[]>()
 
     // prevent recurion if `isFallback == true` product undefind lead to infinity loop
-    !isFallback && useEffect(() => {
-        (async function () {
-            const relatedProducts = await getDefer<IProduct[]>({ url: API.findByCategory + product!.category, includeCookie: true })
-            setRelatedProds(relatedProducts || [])
-        })()
+    useEffect(() => {
+        if (!isFallback)
+            (async function () {
+                const relatedProducts = await getDefer<IProduct[]>({ url: API.findByCategory + product!.category, includeCookie: true })
+                setRelatedProds(relatedProducts || [])
+            })()
     }, [product])
     return (
         <div className={className}>

@@ -2,7 +2,7 @@ import { faGift } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import { useEffect, useState } from "react";
-import { setTotal } from "../../../store/cartTotalSlice";
+import { setTotal } from "../../../store/slices/cartTotalSlice";
 import useTwoWayBinding from "../../../hooks/useTwoWayBinding";
 import DarkButton from "../../../components/UI/DarkButton";
 import TotalSideLayout from "../../../layout/conversionActionLayout/comps/TotalSideLayout";

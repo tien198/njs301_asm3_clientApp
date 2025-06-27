@@ -2,7 +2,7 @@ import type { IProduct } from "../../../interfaces/product";
 
 import useTwoWayBinding from "../../../hooks/useTwoWayBinding";
 import { useAppDispatch } from "../../../hooks/reduxHooks";
-import { addItemWithQuantity } from "../../../store/cartSlice";
+import { addItemWithQuantity } from "../../../store/slices/cartSlice";
 import { useFetcher } from "react-router";
 import { ClientRoutes_absolute as AbsRoute } from "../../../ultil/clientRoutes";
 import QuantityInput from "../../../components/UI/QuantityInput";

@@ -2,7 +2,7 @@ import type { ActionFunctionArgs } from "react-router";
 import { ServerAPI as API } from "../../ultil/serverAPIs";
 import { clearLocalStorageCartItems } from "../../ultil/storageUltil/cartItemsUltil";
 import store from "../../store";
-import { show } from "../../store/modalSlice";
+import { show, type ModalType } from "../../store/slices/modalSlice";
 
 export async function checkoutAction(args: ActionFunctionArgs) {
     const dispatch = store.dispatch
@@ -17,7 +17,7 @@ export async function checkoutAction(args: ActionFunctionArgs) {
         })
         if (res.ok) {
             clearLocalStorageCartItems()
-            dispatch(show())
+            dispatch(show('inform' as ModalType))
         }
         return
     } catch (error) {

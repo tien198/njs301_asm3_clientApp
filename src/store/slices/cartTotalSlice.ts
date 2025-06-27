@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { ICartItem } from "../interfaces/cartItem";
+import type { ICartItem } from "../../interfaces/cartItem";
 
 const initialState = {
     total: 0

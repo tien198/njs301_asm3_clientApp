@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "./reduxHooks"
-import { setLogoState } from "../store/logoSlice"
+import { setLogoState } from "../store/slices/logoSlice"
 import { useEffect } from "react"
 
 export default function useScrollToTopPage() {
@@ -15,6 +15,6 @@ export default function useScrollToTopPage() {
 
     useEffect(() => {
         if (window.scrollY === 0)
-            animationAccept && dispath(setLogoState('scroll-up'))
+            if (animationAccept) dispath(setLogoState('scroll-up'))
     }, [animationAccept])
 }

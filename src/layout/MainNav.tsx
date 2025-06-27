@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { NavLinkRenderProps } from "react-router";
 import { Link, NavLink, useFetcher } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,10 +7,9 @@ import { faCartShopping, faHouse, faShop, faUser } from "@fortawesome/free-solid
 import Logo from "../assets/Logo.svg";
 import Container from "../components/UI/Container";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
-import { setLogoState } from "../store/logoSlice";
+import { setLogoState } from "../store/slices/logoSlice";
 import store from "../store";
-import { getUserInfor } from "../ultil/storageUltil/authenInfor";
-import { ClientRoutes } from "../ultil/clientRoutes";
+import { ClientRoutes, ClientRoutes_absolute } from "../ultil/clientRoutes";
 
 // css
 import classes from "./MainNav.module.css";
@@ -39,8 +38,8 @@ function NavLeftUl() {
 }
 
 function NavRightUl() {
-    const isLogin = !!getUserInfor()
-    const userInfo = useMemo(() => getUserInfor(), [isLogin])
+    const userInfo = useAppSelector(state => state.authen)
+    const isLogin = userInfo.email
 
     // set user name to re-render
     const [userName, setUserName] = useState(userInfo?.name)
@@ -50,7 +49,7 @@ function NavRightUl() {
     const submit = useFetcher().submit
 
     const logout = useCallback(function logout() {
-        submit(null, { action: ClientRoutes.Logout, method: 'POST' })
+        submit(null, { action: ClientRoutes_absolute.Logout, method: 'POST' })
     }, [])
 
     return (

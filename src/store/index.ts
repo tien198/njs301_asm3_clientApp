@@ -1,16 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
-import logoReducer from "./logoSlice";
-import modalReducer from "./modalSlice";
-import responseReducer from "./responseModalSlice";
-import productModalReducer from "./productModalSlice";
-import cartReducer from "./cartSlice";
-import cartTotalReducer from "./cartTotalSlice";
-import livechatReducer from "./livechatSlice";
+import logoReducer from "./slices/logoSlice";
+import authenReducer from "./slices/authenSlice";
+import modalReducer from "./slices/modalSlice";
+import responseReducer from "./slices/responseModalSlice";
+import productModalReducer from "./slices/productModalSlice";
+import cartReducer from "./slices/cartSlice";
+import cartTotalReducer from "./slices/cartTotalSlice";
+import livechatReducer from "./slices/livechatSlice";
 
 
 const store = configureStore({
     reducer: {
         logoState: logoReducer,
+        authen: authenReducer,
         modal: modalReducer,
         response: responseReducer,
         productModal: productModalReducer,

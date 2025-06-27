@@ -2,10 +2,10 @@ import type { IAuthenResponse } from "../../../interfaces/response/fullfill/auth
 
 import { redirect, type ActionFunctionArgs } from "react-router"
 import { ServerAPI } from "../../../ultil/serverAPIs"
-import { addUserInfor } from "../../../ultil/storageUltil/authenInfor"
 import store from "../../../store"
-import { show } from "../../../store/modalSlice"
-import { setResponse } from "../../../store/responseModalSlice"
+import { show } from "../../../store/slices/modalSlice"
+import { setResponse } from "../../../store/slices/responseModalSlice"
+import { setAuthen } from "../../../store/slices/authenSlice"
 
 export async function action(args: ActionFunctionArgs) {
     const dispatch = store.dispatch
@@ -27,12 +27,13 @@ export async function action(args: ActionFunctionArgs) {
 
         if (response.status === 201) {
             const authenRes: IAuthenResponse = (await response.json())
-            addUserInfor(authenRes)
+            dispatch(show('error'))
+            dispatch(setAuthen(authenRes.user))
         }
         return redirect('/')
     } catch (error: any) {
         if (!error.status) {
-            dispatch(show())
+            dispatch(show('error'))
             dispatch(setResponse({
                 statusText: 'Failed to connect to server, please check your network',
             }))

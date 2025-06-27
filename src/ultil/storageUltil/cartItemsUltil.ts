@@ -1,5 +1,5 @@
 import store from "../../store"
-import { clearCart } from "../../store/cartSlice"
+import { clearCart } from "../../store/slices/cartSlice"
 import StorageEnum from "./StorageEnum"
 
 export function getLocalStorageCartItems() {

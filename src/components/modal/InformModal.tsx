@@ -4,8 +4,8 @@ import informModalStyle from './InformModal.module.css'
 
 import Modal from "./Modal"
 import { useCallback, type PropsWithChildren } from "react"
-import { useAppDispatch } from "../../hooks/reduxHooks"
-import { hide } from "../../store/modalSlice"
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks"
+import { hide, type ModalType } from "../../store/slices/modalSlice"
 
 
 
@@ -24,10 +24,9 @@ export default function InformModal({ truthyFnc, falsyFnc, oncloseFnc, children 
         falsyFnc?.()
     }, [falsyFnc, dispatch])
 
-
-    // const type = useStore(modalStore, state => state.type)
-    // if (type !== 'inform')
-    //     return <></>
+    const modalType = useAppSelector(state => state.modal.type)
+    if (modalType !== 'inform' as ModalType)
+        return <></>
 
     return (
         <Modal onCloseFnc={oncloseFnc}>

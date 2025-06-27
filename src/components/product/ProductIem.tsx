@@ -1,8 +1,8 @@
 import type { IProduct } from "../../interfaces/product";
 
 import { useAppDispatch } from "../../hooks/reduxHooks";
-import { show as showAction } from "../../store/modalSlice";
-import { setProduct } from "../../store/productModalSlice";
+import { show as showAction, type ModalType } from "../../store/slices/modalSlice";
+import { setProduct } from "../../store/slices/productModalSlice";
 import convertToFraction from "../../ultil/convertToFraction";
 import Fallback from "../UI/Fallback";
 // css
@@ -17,7 +17,7 @@ export default function ProductItem({ product, className, isFallback = false }: 
   const dispath = useAppDispatch();
 
   const show = () => {
-    dispath(showAction());
+    dispath(showAction('product' as ModalType));
     dispath(setProduct(product));
   };
 
