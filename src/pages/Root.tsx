@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
  * @param pathNamesList - array of pathNames will apply LiveChat component
  */
 function isHasLiveChat(checkingPath: string, pathNamesList: string[]) {
-    for (let i of pathNamesList) {
+    for (const i of pathNamesList) {
         if (checkingPath === i)
             return true
     }

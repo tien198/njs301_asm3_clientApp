@@ -14,7 +14,7 @@
   left: 2.5vw;
   width: 95%;
   /* max-height: 85vh; */
-  height: 95vh;
+  height: max-content;
   overflow: auto;
   background-color: white;
   padding: 1rem;
@@ -36,7 +36,7 @@
   .modal {
     top: 10vh;
     width: 60rem;
-    height: 80vh;
+    max-height: 80vh;
     left: calc(50% - 30rem);
     padding: 5rem;
   }

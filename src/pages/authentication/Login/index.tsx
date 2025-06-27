@@ -19,6 +19,7 @@ import { isNotNull } from '../../../ultil/inputValidationUltil/validate';
 import classes from '../Authen.module.scss'
 import EmailInput from '../formInputs/EmailInput';
 import PasswordInput from '../formInputs/PasswordInput';
+import ErrorModal from '../../../components/modal/ErrorModal';
 
 
 function Login() {
@@ -38,7 +39,7 @@ function Login() {
 
     useEffect(() => {
         if (actionData) {
-            setLoginErrorMsg(actionData.cause?.credential || '')
+            setLoginErrorMsg(actionData.data?.credential || '')
         }
     }, [actionData])
 
@@ -56,7 +57,6 @@ function Login() {
             return null
 
         submit(Object({ email, password }), {
-            action: location.pathname,
             method: 'POST'
         })
     }
@@ -86,6 +86,7 @@ function Login() {
                     </span>
                 </div>
             </Container>
+            <ErrorModal />
         </div>
     );
 }

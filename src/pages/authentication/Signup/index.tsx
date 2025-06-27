@@ -25,6 +25,7 @@ import PasswordInput from '../formInputs/PasswordInput';
 import PhoneInput from '../formInputs/PhoneInput';
 import PasswordConfirmInput from '../formInputs/PasswordConfirmInput';
 import type { UserRegister } from './types/userRegister';
+import ErrorModal from '../../../components/modal/ErrorModal';
 
 
 function Authenticate() {
@@ -50,8 +51,8 @@ function Authenticate() {
     const [uniqueEmailMsg, setUniqueEmailMsg] = useState('')
     useEffect(() => {
         if (actionData) {
-            if (actionData?.cause?.email)
-                setUniqueEmailMsg(actionData.cause.email)
+            if (actionData?.data?.email)
+                setUniqueEmailMsg(actionData.data.email)
         }
     }, [actionData])
 
@@ -109,6 +110,7 @@ function Authenticate() {
                     </span>
                 </div>
             </Container>
+            <ErrorModal />
         </div>
     );
 }

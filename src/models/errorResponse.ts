@@ -1,11 +1,13 @@
 import type { IRes } from "../interfaces/response";
 
-export default class ErrorRes<T extends object = Record<string, any>> extends Error implements IRes {
-    constructor(
-        message: string,
-        public status?: number,
-        public cause?: T
-    ) {
-        super(message)
+export default class ErrorRes<T extends object = Record<string, any>> implements IRes {
+    status?: number;
+    statusText?: string;
+    data?: T;
+
+    constructor(status?: number, statusText?: string, data?: T) {
+        this.status = status;
+        this.statusText = statusText;
+        this.data = data;
     }
 }

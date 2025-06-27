@@ -1,10 +1,11 @@
 import type { ActionFunctionArgs } from "react-router";
-import { redirect } from "react-router";
 import { ServerAPI as API } from "../../ultil/serverAPIs";
-import { ClientRoutes_absolute as AbsAPI } from "../../ultil/clientRoutes";
 import { clearLocalStorageCartItems } from "../../ultil/storageUltil/cartItemsUltil";
+import store from "../../store";
+import { show } from "../../store/modalSlice";
 
 export async function checkoutAction(args: ActionFunctionArgs) {
+    const dispatch = store.dispatch
     try {
         const res = await fetch(API.createOrder, {
             method: args.request.method, // POST
@@ -16,11 +17,9 @@ export async function checkoutAction(args: ActionFunctionArgs) {
         })
         if (res.ok) {
             clearLocalStorageCartItems()
-            return redirect(AbsAPI.Home)
+            dispatch(show())
         }
-
-        alert((await res.json()).message)
-
+        return
     } catch (error) {
         alert('error in checkout action: ' + error)
     }

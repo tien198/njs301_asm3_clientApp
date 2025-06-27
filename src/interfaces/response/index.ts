@@ -1,4 +1,5 @@
 export interface IRes {
     status?: number
-    message: string
+    statusText?: string
+    data?: Record<string, any>
 }

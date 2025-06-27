@@ -1,14 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useAppSelector } from "../../hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import convertToFraction from "../../ultil/convertToFraction";
 import Modal from "./Modal";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router";
 import { ClientRoutes_absolute } from "../../ultil/clientRoutes";
+import { hide } from "../../store/modalSlice";
 
 function ProductModal() {
     const prodState = useAppSelector(({ productModal }) => productModal)
-
+    const dispatch = useAppDispatch()
     return (
         <Modal >
             <div className="grid md:grid-cols-2 justify-center items-center gap-4 py-4">
@@ -21,7 +22,9 @@ function ProductModal() {
                         <p>{prodState.short_desc}</p>
                     </div>
                     <div>
-                        <Link to={`${ClientRoutes_absolute.Detail}/${prodState.id}`} className="inline-block py-4 pl-5 pr-8 text-white bg-slate-800">
+                        <Link to={`${ClientRoutes_absolute.Detail}/${prodState.id}`}
+                            onClick={() => dispatch(hide())}
+                            className="inline-block py-4 pl-5 pr-8 text-white bg-slate-800">
                             <FontAwesomeIcon icon={faCartShopping} className="mr-4" />
                             View Detail
                         </Link>

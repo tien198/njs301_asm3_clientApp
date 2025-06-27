@@ -8,6 +8,7 @@ import { ClientRoutes_absolute as AbsRoute } from "../../../ultil/clientRoutes";
 import QuantityInput from "../../../components/UI/QuantityInput";
 import DarkButton from "../../../components/UI/DarkButton";
 import type { ICartItem } from "../../../interfaces/cartItem";
+import { authenChecking } from "../../../ultil/authenChecking";
 
 interface Props {
     product: IProduct
@@ -19,7 +20,11 @@ export default function AddToCartBtn({ product }: Props) {
 
     const fetcher = useFetcher();
     const dispatch = useAppDispatch()
-    const addToCart = () => {
+    const addToCart = async () => {
+        const isAuth = await authenChecking()
+        if (!isAuth)
+            return
+
         dispatch(addItemWithQuantity({ item: product as ICartItem, quantity: val }))
         fetcher.submit(
             { productId: product.id!, quantity: val },

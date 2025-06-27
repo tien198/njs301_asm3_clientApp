@@ -7,6 +7,7 @@ import DetailDescriptionSide from "./comps/DetailDescriptionSide";
 import RelatedProducts from "./comps/RelatedProducts";
 import useScrollToTopPage from "../../hooks/useScrollToTopPage";
 import useScrollToTopWhenPageIdle from "../../hooks/useScrollToTopWhenPageIdle";
+import ErrorModal from "../../components/modal/ErrorModal";
 
 // DetailProps interface is used for `ImgSide.tsx` & `InforSide.tsx`
 export interface DetailProps {
@@ -27,6 +28,7 @@ export default function DetailIndex() {
                 <DetailDescriptionSide className="mt-8 md:col-start-1 md:col-end-6" />
                 <RelatedProducts className="mt-8 mb-32 md:col-start-1 md:col-end-6" />
             </div>
+            <ErrorModal />
         </Container>
     );
 }

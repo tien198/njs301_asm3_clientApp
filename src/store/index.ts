@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import logoReducer from "./logoSlice";
 import modalReducer from "./modalSlice";
+import responseReducer from "./responseModalSlice";
 import productModalReducer from "./productModalSlice";
 import cartReducer from "./cartSlice";
 import cartTotalReducer from "./cartTotalSlice";
@@ -11,6 +12,7 @@ const store = configureStore({
     reducer: {
         logoState: logoReducer,
         modal: modalReducer,
+        response: responseReducer,
         productModal: productModalReducer,
         cart: cartReducer,
         cartTotal: cartTotalReducer,
