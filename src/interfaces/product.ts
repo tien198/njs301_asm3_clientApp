@@ -9,4 +9,5 @@ export interface IProduct {
     name?: string
     price?: string | number
     short_desc?: string
+    availableQuantity?: number
 }

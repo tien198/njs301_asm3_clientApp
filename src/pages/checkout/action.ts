@@ -3,6 +3,7 @@ import { ServerAPI as API } from "../../ultil/serverAPIs";
 import { clearLocalStorageCartItems } from "../../ultil/storageUltil/cartItemsUltil";
 import store from "../../store";
 import { show, type ModalType } from "../../store/slices/modalSlice";
+import { setResponse } from "../../store/slices/responseModalSlice";
 
 export async function checkoutAction(args: ActionFunctionArgs) {
     const dispatch = store.dispatch
@@ -18,7 +19,11 @@ export async function checkoutAction(args: ActionFunctionArgs) {
         if (res.ok) {
             clearLocalStorageCartItems()
             dispatch(show('inform' as ModalType))
+            return
         }
+        dispatch(show('error' as ModalType))
+        dispatch(setResponse(await res.json()))
+
         return
     } catch (error) {
         alert('error in checkout action: ' + error)

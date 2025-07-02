@@ -15,6 +15,7 @@ function InforSide({ product, className, isFallback = false }: DetailProps) {
             <span className="text-xl">{isFallback ? <Fallback /> : convertToFraction(product!.price) + ' VNĐ'}</span>
             <p>{isFallback ? <Fallback /> : product!.short_desc}</p>
             <p><span className="uppercase text-black mr-2">Category:</span>{isFallback ? <Fallback /> : product!.category}</p>
+            <p><span className="uppercase text-black mr-2">Instock: </span>{isFallback ? <Fallback /> : product!.availableQuantity}</p>
             <div>
                 <AddToCartBtn product={product!} />
             </div>

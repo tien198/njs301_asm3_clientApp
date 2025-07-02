@@ -1,11 +1,8 @@
-import type { MouseEventHandler, PropsWithChildren } from "react";
+import type { ButtonHTMLAttributes } from "react";
 
-interface Props extends PropsWithChildren {
-    className?: string
-    onClick?: MouseEventHandler
-}
-export default function DarkButton({ className, onClick, children }: Props) {
-    return <button onClick={onClick} className={`bg-zinc-900 text-white ${className}`}>
-        {children}
+
+export default function DarkButton(props: ButtonHTMLAttributes<HTMLButtonElement>) {
+    return <button {...props} className={`bg-zinc-900 text-white ${props.className}`}>
+        {props.children}
     </button>
 }

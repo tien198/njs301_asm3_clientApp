@@ -27,7 +27,6 @@ export async function action(args: ActionFunctionArgs) {
 
         if (response.status === 201) {
             const authenRes: IAuthenResponse = (await response.json())
-            dispatch(show('error'))
             dispatch(setAuthen(authenRes.user))
         }
         return redirect('/')

@@ -17,7 +17,7 @@ const modalSlice = createSlice({
     name: 'modal',
     initialState,
     reducers: {
-        show<T extends string = ModalType>(state: ModalState, action: PayloadAction<T>) {
+        show<T extends string = ModalType>(_: ModalState, action: PayloadAction<T>) {
             return {
                 type: action.payload, hiddenClass: ''
             }
