@@ -1,6 +1,7 @@
 export enum ServerAPI {
     base = 'http://localhost:5000/',
     // base = 'https://njs301asm3server-production.up.railway.app/',
+    // base = 'https://minhtien-j6a6.onrender.com/',
     api = base + 'api/',
 
     products = api + 'shop/products/',
